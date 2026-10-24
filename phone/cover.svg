@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Original cinematic science-fiction fleet and ringed planet">
+  <defs>
+    <linearGradient id="space" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050a16"/><stop offset=".46" stop-color="#0b1930"/><stop offset="1" stop-color="#03050e"/>
+    </linearGradient>
+    <radialGradient id="nebulaA" cx="52%" cy="48%" r="58%">
+      <stop offset="0" stop-color="#1a6c96" stop-opacity=".65"/><stop offset=".42" stop-color="#244d95" stop-opacity=".25"/><stop offset="1" stop-color="#13234a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebulaB" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#7a315e" stop-opacity=".45"/><stop offset=".5" stop-color="#412b7a" stop-opacity=".18"/><stop offset="1" stop-color="#30185b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="planet" cx="28%" cy="19%" r="82%">
+      <stop offset="0" stop-color="#b9f0f8"/><stop offset=".18" stop-color="#4e91c3"/><stop offset=".45" stop-color="#203f70"/><stop offset=".76" stop-color="#101b3a"/><stop offset="1" stop-color="#040711"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4fbff" stop-opacity=".05"/><stop offset=".28" stop-color="#93e0f6" stop-opacity=".7"/><stop offset=".53" stop-color="#f4c980" stop-opacity=".65"/><stop offset=".8" stop-color="#689be9" stop-opacity=".25"/><stop offset="1" stop-color="#d4fbff" stop-opacity=".04"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8e9f1"/><stop offset=".2" stop-color="#657e98"/><stop offset=".58" stop-color="#283950"/><stop offset="1" stop-color="#101c2e"/>
+    </linearGradient>
+    <linearGradient id="hullShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#18263a"/><stop offset=".48" stop-color="#657b8f"/><stop offset=".7" stop-color="#2a3e58"/><stop offset="1" stop-color="#0a1322"/>
+    </linearGradient>
+    <linearGradient id="weaponGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff4e6a" stop-opacity="0"/><stop offset=".85" stop-color="#ffb1a3"/><stop offset="1" stop-color="#fff1dc"/>
+    </linearGradient>
+    <radialGradient id="engine">
+      <stop offset="0" stop-color="#edffff"/><stop offset=".25" stop-color="#74eaff"/><stop offset=".65" stop-color="#3da5e3" stop-opacity=".8"/><stop offset="1" stop-color="#2d80d0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur40" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="40"/></filter>
+    <filter id="blur12" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="stars" width="193" height="167" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="19" r="1.2" fill="#e5f9ff" opacity=".75"/><circle cx="54" cy="86" r=".8" fill="#c6e5ff" opacity=".65"/><circle cx="111" cy="35" r=".7" fill="#fff4d3" opacity=".8"/><circle cx="176" cy="120" r="1.1" fill="#d8f8ff" opacity=".55"/><circle cx="149" cy="58" r=".65" fill="#d0deff" opacity=".65"/><circle cx="28" cy="145" r=".6" fill="#d6e5ff" opacity=".55"/><path d="M83 113v5m-2.5-2.5h5" stroke="#d7f6ff" stroke-width=".7" opacity=".7"/>
+    </pattern>
+    <clipPath id="planetClip"><circle cx="1240" cy="638" r="294"/></clipPath>
+    <g id="frigate">
+      <path d="M-190 0 -138-15 -98-31 -34-33 4-20 108-13 182-4 205 0 177 8 96 18 15 21 -36 35 -91 27 -129 12Z" fill="url(#hull)" stroke="#afc7d8" stroke-width="2"/>
+      <path d="M-139-13 -100-29 -35-31 -17-8 -87-2Z" fill="#a9c3d5" opacity=".65"/>
+      <path d="M-80-1 -19-9 106-7 153-3 102 4 -9 6Z" fill="url(#hullShade)"/>
+      <path d="M-39-30 -17-71 6-72 14-24 5 18 -13 30 -24 8Z" fill="url(#hull)"/>
+      <path d="M-23-48 0-65 4-31 -15-20Z" fill="#9bc3d9" opacity=".78"/>
+      <path d="M-14-68 0-89 13-67" fill="#526d88" stroke="#a8c8d8" stroke-width="2"/>
+      <path d="M-110 6 -152 30 -75 22 -44 13Z" fill="#24384f" stroke="#7897b0" stroke-width="1.5"/>
+      <path d="M61 10 98 32 122 18 95 10Z" fill="#1b2a40" stroke="#7897b0" stroke-width="1.4"/>
+      <path d="M-176-2 -143-7 -142 0 -174 5Z" fill="#b5e2f0" opacity=".5"/>
+      <path d="M34-13 44-21 49-12 44-4Z" fill="#6ee8ff" opacity=".9"/>
+      <path d="M-111-14 -101-18 -97-9 -108-7Z" fill="#ff737e"/>
+      <path d="M-193-4 -242-1 -193 2Z" fill="url(#engine)" filter="url(#glow)"/>
+      <path d="M-183 9 -212 10 -183 12Z" fill="#ffb46f" filter="url(#glow)"/>
+      <g fill="#4ee4ff" opacity=".75"><rect x="-64" y="-8" width="9" height="2"/><rect x="-45" y="-8" width="9" height="2"/><rect x="7" y="9" width="7" height="2"/><rect x="28" y="9" width="7" height="2"/></g>
+      <g stroke="#e7f7ff" stroke-width="1" opacity=".5"><path d="M-83-20 -74-12 -60-13"/><path d="M19-1 32-4 52-2"/><path d="M89 9 101 13 121 10"/></g>
+    </g>
+    <g id="escort">
+      <path d="M-80 0 -44-10 5-11 68-2 80 0 55 5 7 10 -34 8Z" fill="url(#hull)" stroke="#a6c2d7" stroke-width="1.5"/>
+      <path d="M-21-8 -7-26 5-25 11-7 3 8 -10 11Z" fill="#7b97b1" stroke="#c8e0ea" stroke-width="1"/>
+      <path d="M-34 2 0-2 41-1 56 1 13 4Z" fill="#1b2e47"/>
+      <circle cx="-79" cy="0" r="6" fill="url(#engine)"/><path d="M-79-2 -100 0 -79 2" fill="#63dbff"/>
+      <path d="M17-2 26-5 30-1" stroke="#ff8f84" stroke-width="2" fill="none"/>
+    </g>
+  </defs>
+  <rect width="1600" height="900" fill="url(#space)"/>
+  <rect width="1600" height="900" fill="url(#stars)" opacity=".9"/>
+  <ellipse cx="510" cy="420" rx="570" ry="260" fill="url(#nebulaA)" filter="url(#blur40)"/>
+  <ellipse cx="1010" cy="240" rx="460" ry="280" fill="url(#nebulaB)" filter="url(#blur40)"/>
+  <path d="M45 710 Q290 480 535 500 T1015 250 T1510 160" stroke="#3586c5" stroke-width="85" opacity=".06" fill="none" filter="url(#blur40)"/>
+  <path d="M0 624 Q300 416 586 516 T1068 280 T1600 220" stroke="#ae6ca5" stroke-width="3" opacity=".18" fill="none"/>
+  <g opacity=".84" transform="translate(500 302) scale(1.1) rotate(-4)">
+    <use href="#frigate" opacity=".5" transform="translate(58 60) scale(.6)"/>
+    <use href="#escort" transform="translate(-200 144) scale(.7)"/>
+    <use href="#escort" transform="translate(300 -85) scale(.68)"/>
+  </g>
+  <g transform="translate(635 470) scale(1.14) rotate(-3)">
+    <ellipse cx="-195" cy="0" rx="68" ry="26" fill="#43baff" opacity=".25" filter="url(#blur12)"/>
+    <use href="#frigate"/>
+    <path d="M-37-47 -3-53 7-33 -22-26Z" fill="#d7f7ff" opacity=".25"/>
+    <path d="M-25 15 -6 23 12 14" stroke="#f3c77b" stroke-width="3" opacity=".7" fill="none"/>
+    <path d="M80-11 118-8 117-3 80-5Z" fill="#f5e1a9" opacity=".9"/>
+    <path d="M109-9 152-18 164-15 118-5Z" fill="url(#weaponGlow)" filter="url(#glow)"/>
+  </g>
+  <g transform="translate(330 600) scale(.66) rotate(9)"><use href="#frigate" opacity=".8"/></g>
+  <g transform="translate(850 330) scale(.42) rotate(-16)"><use href="#escort"/></g>
+  <g transform="translate(1010 585) scale(.65) rotate(18)"><use href="#escort"/></g>
+  <circle cx="1240" cy="638" r="335" fill="#5fd3ff" opacity=".13" filter="url(#blur40)"/>
+  <ellipse cx="1240" cy="638" rx="440" ry="107" fill="none" stroke="#4b91cf" stroke-width="27" opacity=".22" transform="rotate(-20 1240 638)"/>
+  <ellipse cx="1240" cy="638" rx="422" ry="94" fill="none" stroke="url(#ring)" stroke-width="10" opacity=".72" transform="rotate(-20 1240 638)"/>
+  <circle cx="1240" cy="638" r="294" fill="url(#planet)" stroke="#a8edff" stroke-opacity=".5" stroke-width="3"/>
+  <g clip-path="url(#planetClip)" opacity=".48">
+    <path d="M924 459 Q1050 402 1164 455 T1400 456 T1590 412 L1595 505 Q1430 560 1310 516 T1075 530 T885 560Z" fill="#6dc5e8" opacity=".22"/>
+    <path d="M897 601 Q1003 555 1090 608 T1272 606 T1448 574 T1601 604 L1600 669 Q1432 700 1320 673 T1090 674 T890 706Z" fill="#d2e7bb" opacity=".15"/>
+    <path d="M1006 384 Q1082 467 1052 544 T1111 682 T1087 821" stroke="#9ac9d9" stroke-width="19" fill="none" opacity=".18"/>
+    <path d="M1319 374 Q1270 469 1333 515 T1300 642 T1371 835" stroke="#d1e3fa" stroke-width="35" fill="none" opacity=".15"/>
+    <path d="M923 721 Q1082 673 1185 736 T1417 723 T1547 754" stroke="#d5e9ff" stroke-width="7" fill="none" opacity=".25"/>
+    <circle cx="1371" cy="502" r="44" fill="#bdcfe7" opacity=".13"/><circle cx="1371" cy="502" r="24" fill="#0b2447" opacity=".3"/>
+  </g>
+  <path d="M1018 393 A294 294 0 0 1 1504 476" fill="none" stroke="#c5f8ff" stroke-width="8" opacity=".55" filter="url(#glow)"/>
+  <ellipse cx="1240" cy="638" rx="440" ry="107" fill="none" stroke="#7db9e7" stroke-width="7" opacity=".45" transform="rotate(-20 1240 638)"/>
+  <g fill="#b4cde1" opacity=".9">
+    <path d="M1094 176l3-16 3 16 16 3-16 3-3 16-3-16-16-3Z"/><path d="M1437 301l2-10 2 10 10 2-10 2-2 10-2-10-10-2Z"/><path d="M899 730l2-10 2 10 10 2-10 2-2 10-2-10-10-2Z"/>
+  </g>
+  <g fill="#4fe3ff" filter="url(#glow)"><circle cx="122" cy="155" r="2.8"/><circle cx="758" cy="172" r="2.2"/><circle cx="970" cy="115" r="1.8"/><circle cx="1515" cy="115" r="2.5"/><circle cx="718" cy="752" r="1.7"/></g>
+  <rect x="0" y="0" width="1600" height="900" fill="url(#space)" opacity=".08"/>
+</svg>

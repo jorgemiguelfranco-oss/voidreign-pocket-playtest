@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#07101f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><title>VOIDREIGN: Pocket Empire</title><style>
+:root{color-scheme:dark;--bg:#07101f;--panel:#101d30;--line:#263b56;--cyan:#6de4ff;--gold:#f6c76b;--muted:#94a9c2;--red:#ff7c85}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1d4264 0,transparent 55%),var(--bg);color:#e8f4ff;font:15px system-ui,sans-serif}header{padding:16px 16px 10px;position:sticky;top:0;background:linear-gradient(90deg,#07101ff2 0%,#07101fdc 43%,#07101f8a 100%),url('./cover.svg') 68% 42%/cover;backdrop-filter:blur(12px);z-index:5;border-bottom:1px solid var(--line)}.brand{letter-spacing:.18em;color:var(--cyan);font-size:11px;font-weight:800}.title{font-size:23px;font-weight:800;margin:2px 0}.sub{color:var(--muted);font-size:12px}.resources{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:12px}.resource small{font-size:9px}.resource{min-width:0}.resource{background:#12243a;border:1px solid var(--line);border-radius:10px;padding:8px 5px;text-align:center}.resource b{display:block;color:var(--gold);font-size:15px}.resource small{color:var(--muted);font-size:9px}main{padding:12px 12px 100px;max-width:760px;margin:auto}.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px}.tab,button,select{font:inherit;color:inherit;background:#14263d;border:1px solid var(--line);border-radius:10px;padding:10px}.tab.active{border-color:var(--cyan);color:var(--cyan);background:#15334a}.card{background:linear-gradient(140deg,#13243a,#0c1728);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.card h2{font-size:17px;margin:0 0 8px}.muted{color:var(--muted)}.row{display:flex;gap:8px;align-items:center;justify-content:space-between}.row+.row{margin-top:8px}.pill{font-size:11px;border:1px solid #36516d;border-radius:99px;padding:4px 8px;color:var(--cyan)}button{cursor:pointer;min-height:42px}button.primary{background:#0d647c;border-color:#2a9ab4;font-weight:700}button.warn{color:var(--gold)}button:disabled{opacity:.4}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.system{padding:10px;border:1px solid var(--line);border-radius:12px;background:#0c192a;text-align:left;min-height:82px}.system.selected{border-color:var(--gold);background:#252b35}.system b{display:block}.system small{color:var(--muted)}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.actions button{flex:1}.bar{height:6px;border-radius:9px;background:#25364b;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#42b6d7,#83f1ff)}.log{font-size:13px;color:#b6c8dc;padding:8px 0;border-bottom:1px solid #223248}.log:last-child{border:0}.hidden{display:none}.ship{border:1px solid var(--line);padding:10px;border-radius:10px}.ship b{display:block}.bottom{position:fixed;bottom:0;left:0;right:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#07101fee;border-top:1px solid var(--line);display:flex;gap:8px;z-index:8}.bottom button{flex:1}.notice{color:var(--gold);font-size:12px;margin-top:8px}input{width:100%;padding:10px;border-radius:9px;border:1px solid var(--line);background:#07101f;color:white}.perk-card,.companion,.faction{border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0;background:#0b1929}.faction-head{display:flex;align-items:center;gap:9px}.faction-sigil{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1px solid var(--faction-color);border-radius:50%;color:var(--faction-color);font-size:11px;font-weight:900;letter-spacing:.03em;background:color-mix(in srgb,var(--faction-color) 10%,#0b1929)}.perk-card h3,.companion h3,.faction h3{margin:0 0 5px;font-size:15px}.perk-card p,.companion p,.faction p{margin:5px 0;color:var(--muted);font-size:13px}.meter{height:5px;background:#26364a;border-radius:8px;overflow:hidden;margin-top:6px}.meter i{display:block;height:100%;background:linear-gradient(90deg,#f6c76b,#6de4ff)}.tagrow{display:flex;gap:5px;flex-wrap:wrap;margin:6px 0}.tag{font-size:11px;padding:3px 7px;border:1px solid #36516d;border-radius:99px;color:#b9d8ed}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.stat{background:#0a1727;border:1px solid var(--line);border-radius:10px;padding:8px}.stat b{display:block;color:var(--gold)}.stat small{color:var(--muted);font-size:10px}.world-card{border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:#0b1929}.world-card summary{cursor:pointer;font-weight:700;padding:4px}.world-card .actions{margin:8px 0}.world-card .actions button{font-size:12px;padding:8px}.technology{border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0;background:#0b1929}.technology h3{margin:0;font-size:15px}.technology p{font-size:13px;color:var(--muted)}.ship-module{border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:#0b1929}.ship-module summary{cursor:pointer;font-weight:700;padding:5px}.ship-module .actions button{font-size:11px;padding:7px}.objective{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}.objective:last-child{border-bottom:0}.objective .check{color:var(--cyan);font-size:18px}.objective.done{opacity:.68}.galaxy-map{height:300px;border:1px solid #263b56;border-radius:13px;overflow:hidden;background:radial-gradient(ellipse at center,#132b43 0%,#06101f 67%,#030710 100%);position:relative;margin:8px 0}.galaxy-map svg{width:100%;height:100%;display:block}.galaxy-map .lane{stroke:#3a5b7b;stroke-width:.35;opacity:.45}.galaxy-map .lane-known{stroke:#4ca7c5;opacity:.82;stroke-width:.65}.galaxy-map circle{cursor:pointer;stroke:#07101f;stroke-width:.5}.galaxy-map .star-hidden{fill:#62728a;opacity:.45}.galaxy-map .star-known{fill:#6de4ff}.galaxy-map .star-owned{fill:#f6c76b;stroke:#fff1c6;stroke-width:1}.galaxy-map .star-current{fill:#ff7c85;stroke:#fff;stroke-width:1.2}.galaxy-map text{font:2.5px system-ui,sans-serif;fill:#d8eafa;pointer-events:none}.map-controls{align-items:center}.map-controls .actions{margin:0}.map-controls button{min-width:38px;padding:6px}@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}button:disabled{opacity:.42;cursor:not-allowed}@media(max-width:390px){.tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.resources{grid-template-columns:repeat(3,minmax(0,1fr))}.galaxy-map{height:255px}.title{font-size:21px}.card{padding:11px}.stat{padding:7px 4px}}
+ .battle-portrait{border:1px solid #704554;background:radial-gradient(ellipse at 70% 10%,#532e46,#10121f 65%);border-radius:12px;padding:12px}.battle-hull{height:7px;background:#253347;border-radius:99px;overflow:hidden}.battle-hull i{height:100%;display:block;background:linear-gradient(90deg,#ff606b,#f5c76b)}.battle-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.battle-actions button{min-height:44px}.battle-feed{font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--line)}
+/* Hand-authored command-deck treatment: hard edges, restrained instrument glow and legible mobile hierarchy. */
+:root{--panel-2:#0a1626;--cyan-dim:#377d94;--gold-dim:#927344;--ink:#dce9f2}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.005em;background:radial-gradient(ellipse at 76% -16%,#1e4055 0,transparent 48%),radial-gradient(ellipse at 10% 35%,#0c1a2e 0,transparent 48%),#050b15}
+header{background-color:#07101ff4;box-shadow:0 8px 30px #02071170}
+.brand{font-size:10px;letter-spacing:.22em}
+.title{font-size:clamp(19px,5vw,26px);letter-spacing:-.035em;line-height:1.16}
+.sub{letter-spacing:.025em}
+.card{background:linear-gradient(145deg,#122337f5,#091523fa);border-color:#243d56;border-radius:13px;box-shadow:0 9px 23px #02071122}
+.card h2{letter-spacing:.01em}
+.tab,button,select{background:linear-gradient(180deg,#172b41,#0d1b2d);border-color:#2b4258;transition:background .13s,border-color .13s,transform .13s}
+button:active{transform:translateY(1px)}
+.tab.active,button.primary{background:linear-gradient(180deg,#17516a,#103447);border-color:#4db8d3;box-shadow:inset 0 1px #c4f7ff20}
+.tab{font-size:13px;font-weight:650;letter-spacing:.015em}
+.tabs{gap:5px}
+.resources{gap:5px}
+.resource{border-radius:6px;background:linear-gradient(180deg,#14263a,#0a1625);border-color:#253b51;padding:7px 3px}
+.resource b{font-size:clamp(13px,3.4vw,16px)}
+.resource small{font-size:9px;letter-spacing:.015em}
+.system{background:#0b1828;border-color:#243950;border-radius:7px;min-height:76px}
+.system.selected{box-shadow:inset 3px 0 var(--gold);background:#172438}
+.pill{letter-spacing:.035em;text-transform:uppercase;font-size:9px;font-weight:800;border-radius:4px}
+.faction-sigil{border-radius:7px}
+.perk-card,.companion,.faction,.world-card,.technology,.ship-module{background:linear-gradient(135deg,#0e1c2d,#081321);border-color:#253b50;border-radius:8px}
+.objective{border-color:#25384d}
+.objective.done .check{color:#9ce6a0}
+.bar,.meter{background:#1d2b3e}
+.bar i,.meter i{background:linear-gradient(90deg,#3baecb,#a9eaf5)}
+.bottom{background:#060d18f5;border-color:#263b50;box-shadow:0 -10px 30px #0004;backdrop-filter:blur(16px)}
+.bottom button{border-radius:7px;font-size:13px;font-weight:750}
+input{border-radius:7px;background:#07111f;border-color:#2c4259}
+.galaxy-map{height:clamp(250px,66vw,340px);border-radius:8px;background:radial-gradient(ellipse at 50% 50%,#142b40,#07101c 68%,#030711);box-shadow:inset 0 0 48px #02071190}
+.galaxy-map .lane{stroke:#446783;stroke-width:.3;opacity:.4}
+.galaxy-map .lane-known{stroke:#65c7df;stroke-width:.55;opacity:.68}
+.galaxy-map circle{transition:r .12s,opacity .12s}
+.galaxy-map circle:active{r:3}
+.galaxy-map text{font-family:ui-monospace,monospace;font-size:2.2px;letter-spacing:.02em}
+.command-deck{position:relative;min-height:260px;overflow:hidden;border:1px solid #36546c;border-radius:10px;margin:10px 0 14px;background:#0b1624 url('./command-bridge.svg') 55% center/cover no-repeat;isolation:isolate}
+.command-deck:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#06101ff0 0%,#07111fde 32%,#07111f72 70%,#07111f35 100%),linear-gradient(0deg,#06101fe6 0%,transparent 58%);z-index:-1}
+.command-deck:after{content:"";position:absolute;inset:9px;border:1px solid #92cce31c;pointer-events:none}
+.command-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;min-height:260px;padding:18px 16px 17px}
+.eyebrow{font:800 9px ui-monospace,monospace;letter-spacing:.19em;color:#87d9ea;text-transform:uppercase}
+.command-title{font-size:26px;font-weight:900;line-height:1.04;letter-spacing:-.045em;margin:8px 0 5px;text-transform:uppercase;max-width:340px;text-shadow:0 2px 15px #000}
+.command-subtitle{font-size:12px;color:#cedbe3;max-width:310px;line-height:1.55;margin:0}
+.command-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.command-chip{padding:5px 7px;background:#06101ccc;border:1px solid #46617a;font:800 9px ui-monospace,monospace;color:#b8d7e3;letter-spacing:.05em}
+.command-deck-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.command-deck-actions button{font-size:11px;min-height:36px;border-radius:5px;padding:8px 12px}
+.chronicle{border:1px solid #29445c;border-radius:9px;overflow:hidden;margin:10px 0 14px;background:linear-gradient(145deg,#0b1828,#08111f)}
+.chronicle-top{padding:12px 13px;background:#12253a;border-bottom:1px solid #2a4258}
+.chronicle-title{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.chronicle-title h2{margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.chronicle-lead{font-size:12px;color:#9db6c8;margin:6px 0 0;line-height:1.5}
+.chronicle-list{padding:8px 13px}
+.chronicle-step{display:grid;grid-template-columns:25px minmax(0,1fr);gap:9px;padding:9px 0;border-bottom:1px solid #203349}
+.chronicle-step:last-child{border-bottom:0}
+.chronicle-index{width:23px;height:23px;display:grid;place-items:center;border:1px solid #35516a;border-radius:5px;font:800 10px ui-monospace,monospace;color:#86a9c0}
+.chronicle-step.active .chronicle-index{background:#123e50;border-color:#57bcd5;color:#baf3ff}
+.chronicle-step.done .chronicle-index{background:#18372d;border-color:#528b70;color:#b1efc8}
+.chronicle-step b{font-size:12px;letter-spacing:.01em}
+.chronicle-step p{font-size:11px;color:#91a9bd;line-height:1.45;margin:3px 0 0}
+.chronicle-progress{height:3px;background:#1e3045;margin-top:7px}
+.chronicle-progress i{display:block;height:100%;background:#62c7df}
+.planet-panel{margin:10px 0;border:1px solid #28435b;border-radius:8px;overflow:hidden;background:#071321}
+.planet-panel svg{display:block;width:100%;height:auto;max-height:170px}
+.planet-caption{display:flex;justify-content:space-between;gap:9px;background:#0c1928;padding:7px 9px;border-top:1px solid #253b50;font:800 9px ui-monospace,monospace;color:#88a7bd;letter-spacing:.08em;text-transform:uppercase}
+.ship-summary{display:flex;align-items:center;gap:10px}
+.ship-art{width:70px;max-width:24%;height:38px;flex:none}
+.ship-art svg{width:100%;height:100%;display:block}
+.ship-meta{min-width:0}
+.ship-meta strong{display:block;font-size:13px}
+.ship-meta small{display:block;color:#98adc0;font-size:10px;margin-top:3px}
+.battle-contact-visual{display:flex;align-items:center;gap:12px;margin:8px 0;padding:10px;background:#090f1c;border:1px solid #382d3c;border-radius:7px}
+.battle-contact-visual svg{width:95px;height:48px;flex:none}
+.battle-contact-visual p{margin:0}
+#content-warning{border-color:#7c6340;background:linear-gradient(145deg,#302817,#111a27)}
+#content-warning .pill{color:#e9c783;border-color:#826d46}
+@media(min-width:640px){.command-deck,.command-content{min-height:320px}.command-content{padding:26px}.command-title{font-size:34px}.command-subtitle{font-size:14px}.command-deck{background-position:center 52%}.chronicle-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}.chronicle-step:nth-last-child(2){border-bottom:0}}
+@media(max-width:390px){.command-deck,.command-content{min-height:250px}.command-content{padding:14px 12px}.command-title{font-size:23px}.command-meta{margin-top:9px}.command-deck-actions button{padding:7px 9px}.chronicle-top{padding:10px}.chronicle-list{padding:7px 10px}.ship-art{width:56px}}
+</style></head><body><header><div class="brand">VOIDREIGN // POCKET EMPIRE</div><div class="title">From drifter to galactic sovereign.</div><div class="sub" id="turnline">Captain's sandbox · Local offline save</div><div class="resources" id="resources"></div></header><main><div class="tabs" id="tabs"><button class="tab active" data-tab="map">Galaxy</button><button class="tab" data-tab="captain">Captain</button><button class="tab" data-tab="fleet">Fleet</button><button class="tab" data-tab="companions">Companions</button><button class="tab" data-tab="empire">Empire</button><button class="tab" data-tab="shop">Exchange</button><button class="tab" data-tab="ledger">Ledger</button></div>
+<section id="map"><div class="card" id="content-warning"><div class="row"><h2>Content advisory · 18+ sci-fi themes</h2><span class="pill">Mature</span></div><p class="muted">This fictional campaign can include genocide, orbital mass destruction, body horror, gore and war-crime consequences. This prototype uses text events, not finished graphic violence artwork. You can switch to reduced graphic descriptions in the Ledger.</p><button data-action="ack-warning" class="primary">Acknowledge and continue</button></div><section class="command-deck" aria-label="Campaign command deck"><div class="command-content"><div class="eyebrow">VOIDREIGN FIELD DOSSIER / 017</div><div class="command-title">The Silent Crown</div><p class="command-subtitle">One ship. A debt you cannot outrun. Sixteen powers watching a frontier that should have stayed dark.</p><div class="command-meta"><span class="command-chip" id="deck-rank">DEBTOR-CAPTAIN</span><span class="command-chip" id="deck-turn">TURN 01</span><span class="command-chip">SINGLE-PLAYER · OFFLINE</span></div><div class="command-deck-actions"><button data-tab-jump="captain" class="primary">Captain dossier ↗</button><button data-tab-jump="fleet">Fleet command ↗</button></div></div></section><section class="chronicle" id="campaign-chronicle" aria-label="Campaign story and objectives"><div class="chronicle-top"><div class="chronicle-title"><h2>Operation: Silent Crown</h2><span class="pill" id="story-phase">Chapter 01</span></div><p class="chronicle-lead" id="story-lead">The frontier is older than the charts. Your first task is to map what survived.</p></div><div class="chronicle-list" id="story-chapters"></div></section><div class="card"><div class="row"><h2>Known space</h2><span class="pill" id="systemcount"></span></div><p class="muted">A connected galaxy of 200 systems. Unknown systems stay hidden until you reach them; travel only along hyperlanes.</p><div class="stats"><div class="stat"><b id="galaxy-total">200</b><small>GALAXY SYSTEMS</small></div><div class="stat"><b id="galaxy-known">0</b><small>CHARTED</small></div><div class="stat"><b id="galaxy-owned">0</b><small>CONTROLLED</small></div></div><div class="row map-controls"><b>Galactic chart · all 200 systems</b><div class="actions"><button data-zoom="out" aria-label="Zoom out">−</button><button data-zoom="reset">Reset</button><button data-zoom="in" aria-label="Zoom in">+</button></div></div><div class="galaxy-map"><svg id="galaxy-svg" viewBox="-120 -120 240 240" role="img" aria-label="Interactive galaxy star chart"></svg></div><p class="muted">Bright stars are charted; faction colours identify rival systems, gold marks your territory, red marks your location. Dim stars are unexplored.</p><p><input id="galaxySearch" placeholder="Search charted systems…" autocomplete="off"></p><div class="grid" id="systems"></div></div><div class="card" id="systemdetail"></div></section>
+<section id="captain" class="hidden"><div class="card"><h2>Your captain</h2><div class="row"><span id="captainname"></span><span class="pill" id="rank"></span></div><p class="muted" id="captainbio"></p><div class="row"><b id="levelline">Level 1</b><span class="pill" id="xpline">0 / 50 XP</span></div><div class="bar"><i id="xpbar"></i></div><p class="muted" id="skillline"></p><div class="stats" id="captainstats"></div><div class="actions"><button data-action="explore">Explore system</button><button data-action="scheme">Work the underworld</button></div><div class="card"><h2>From Debt to Dynasty</h2><p class="muted">A living campaign track with rewards for reaching meaningful milestones.</p><div id="milestones"></div></div><div class="card" id="levelup" style="margin:12px 0"><h2>Level-up perks</h2><p class="muted" id="perkpoints"></p><div id="perks"></div></div></div><div class="card"><h2>Available contracts</h2><div id="contracts"></div></div></section>
+<section id="fleet" class="hidden"><div class="card"><h2>Fleet & shipyard</h2><p class="muted">Ships are persistent assets. Repairs and construction consume real resources.</p><div id="ships"></div><div id="battle-panel" class="card"></div><div class="actions"><button data-action="build-scout">Build scout · 35 credits</button><button data-action="build-frigate">Build frigate · 70 credits / 20 minerals</button></div><div class="actions"><button data-action="repair">Repair fleet · 12 credits per hull</button><button data-action="fight">Test tactical encounter</button></div></div><div class="card"><h2>Modular ship refit</h2><p class="muted">Expand each ship below to install weapon arrays, armour, shields, sensors and cargo modules. Each can be upgraded three times.</p><p class="muted">Ship modules affect real stats and costs; designs remain in your local campaign save.</p></div></section>
+<section id="companions" class="hidden"><div class="card"><div class="row"><h2>Your retinue</h2><span class="pill" id="partycount">0 / 2</span></div><p class="muted">Recruit specialists who alter exploration, trade, combat and diplomacy. Companions earn loyalty and cost wages each turn.</p><div id="party"></div></div><div class="card"><h2>Available companions</h2><p class="muted">Hire specialists to round out your party. Charismatic Leader increases capacity.</p><div id="recruits"></div></div></section>
+<section id="empire" class="hidden"><div class="card"><h2>Empire overview</h2><div id="empirestats" class="stats"></div><p class="muted">Build from one foothold into a multi-system power. Claim habitable unowned systems, develop colonies, and invest in relations before starting wars.</p><div id="worlds"></div></div><div class="card"><h2>Government policy</h2><p class="muted">Choose where your empire puts its resources. Policy changes apply when you end the turn.</p><div class="actions"><button data-policy="balanced">Balanced</button><button data-policy="industrial">Industrial</button><button data-policy="trade">Commercial</button><button data-policy="research">Research</button></div><p class="muted" id="policy-description"></p></div><div class="card"><h2>Research & development</h2><p class="muted">Owned systems generate science each turn. Laboratories speed the path to advanced technology.</p><div id="technologies"></div></div><div class="card"><h2>Diplomacy & species</h2><p class="muted">Sixteen civilizations have distinct doctrines. Envoys cost credits; better relations can unlock treaties.</p><div id="factions"></div></div></section>
+<section id="shop" class="hidden"><div class="card"><div class="row"><h2>Void Exchange</h2><span class="pill"><span id="shard-balance">0</span> Void Shards</span></div><p class="muted">Earn Void Shards through campaign milestones and spend them on permanent cosmetic unlocks. No combat bonuses, loot boxes, forced ads or blockchain. Real-money top-ups are not enabled until Google Play Billing is implemented and tested.</p><div id="cosmetic-shop"></div></div><div class="card"><h2>Fair economy charter</h2><p class="muted">Credits, Research Data and Strategic Materials are earned through play. Void Shards are optional premium currency; cosmetics never improve combat strength. Purchases and unlocks stay attached to this local save in this prototype.</p></div></section><section id="ledger" class="hidden"><div class="card"><h2>Captain's ledger</h2><div id="ledgerlines"></div><div class="actions"><button data-action="save">Save now</button><button data-action="export">Export save</button><button data-action="import">Import save</button><button data-action="reset" class="warn">New campaign</button></div><p class="muted">Autosaves on this device. Export a backup before clearing browser data.</p></div><div class="card" id="debt-card"><h2>Debt & financing</h2><p class="muted">The starting loan compounds into a survival problem, not a free counter reset. Creditor interest is charged each turn; repay principal in chunks of up to 25 credits whenever cash flow permits.</p><div id="debtline" class="stats"></div><button data-action="repay-debt" id="repay-debt">Repay up to 25 credits</button></div><div class="card"><h2>Content settings</h2><p class="muted">The mature setting changes the text used for fictional violence. It does not change strategic outcomes.</p><button id="gore-setting" data-action="toggle-gore">Reduced graphic descriptions: ON</button></div><div class="card"><h2>Campaign rules</h2><p class="muted">No account, network calls, ads, or external assets. This is a compact mobile adaptation, not a replacement for the full PC vision.</p></div></section></main><div class="bottom"><button id="endturn" class="primary">End turn →</button><button id="quicksave">Save</button></div>
+<script>
+(()=>{'use strict';
+const $=s=>document.querySelector(s), all=s=>[...document.querySelectorAll(s)], KEY='voidreign-pocket-v2';
+const speciesRoster=[
+{id:"solari",color:"#67d8ff",sigil:"SC",name:"Solari Concord",style:"Diplomatic",home:"Solari Prime",bonus:"Trade and treaties"},
+{id:"varkesh",color:"#ff646f",sigil:"VK",name:"Varkesh Dominion",style:"Militarist",home:"Varkesh Hold",bonus:"Fleet power and fortifications"},
+{id:"mycel",color:"#a8e66b",sigil:"MC",name:"Mycelian Chorus",style:"Swarm",home:"Mycel Bloom",bonus:"Adaptation and organic growth"},
+{id:"khepri",color:"#f4b45e",sigil:"KF",name:"Khepri Foundries",style:"Industrial",home:"Khepri Forge",bonus:"Mining and shipbuilding"},
+{id:"nacre",color:"#c5a4ff",sigil:"NV",name:"Nacrean Veil",style:"Psionic",home:"Nacre Veil",bonus:"Intelligence and anomaly research"},
+{id:"thren",color:"#ff9c72",sigil:"TA",name:"Thren Ascendancy",style:"Adaptive",home:"Thren March",bonus:"Colonization and recovery"},
+{id:"axiom",color:"#8de7d4",sigil:"AX",name:"Axiom Continuum",style:"Machine",home:"Axiom Core",bonus:"Precision and research"},
+{id:"drath",color:"#f17ac8",sigil:"DK",name:"Drath Kha",style:"Raider",home:"Drath Maw",bonus:"Raids and mobility"},
+{id:"uln",color:"#70a5ff",sigil:"UD",name:"Ulnari Deep",style:"Adaptive",home:"Ulnari Deep",bonus:"Habitats and resilience"},
+{id:"seraph",color:"#fff0a0",sigil:"SR",name:"Seraphic Remnant",style:"Psionic",home:"Seraph Crown",bonus:"Relics and unity"},
+{id:"goreth",color:"#c6e85b",sigil:"GB",name:"Goreth Brood",style:"Swarm",home:"Goreth Nest",bonus:"Ground assault and expansion"},
+{id:"vel",color:"#6effb8",sigil:"VE",name:"Velari Exchange",style:"Diplomatic",home:"Velari Exchange",bonus:"Commerce and espionage"},
+{id:"oruun",color:"#9aa7bd",sigil:"OS",name:"Oruun Sepulchre",style:"Machine",home:"Oruun Sepulchre",bonus:"Ancient weapons and defense"},
+{id:"talar",color:"#e7a66e",sigil:"TF",name:"Talar Freeholds",style:"Industrial",home:"Talar Reach",bonus:"Frontier economy and militia"},
+{id:"eshari",color:"#d0a7ff",sigil:"EC",name:"Eshari Covenant",style:"Diplomatic",home:"Eshari Accord",bonus:"Coalition warfare and stability"},
+{id:"null",color:"#ff5555",sigil:"NS",name:"NULL Sovereignty",style:"Exterminator",home:"NULL Terminus",bonus:"Total-war logistics"}
+];
+function makeGalaxy(seed=418204){
+ seed=Number(seed)>>>0;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+ const endings=["Reach","Gate","Haven","Fall","Spire","Deep","Crown","Wake","Bastion","Veil","March","Point","Nexus","Grave","Bloom","Forge","Hollow","Watch","Rest","Expanse"];
+ const prefixes=["Astra","Vesper","Khar","Nox","Eid","Thal","Orr","Cinder","Nyx","Vel","Morrow","Ilyr","Rift","Sable","Dread","Helio","Kest","Umbral","Calyx","Omen","Peregrine","Ashen","Lumen","Grim","Harrow","Echo","Silent","Iron","Vigil","Shatter"];
+ const systems=[];
+ for(let i=0;i<200;i++){
+  const angle=rnd()*Math.PI*2,rad=12+Math.sqrt(rnd())*95;
+  const faction=i<16?speciesRoster[i].id:(i>25&&rnd()<.52?speciesRoster[Math.floor(rnd()*speciesRoster.length)].id:null);
+  const name=i<16?speciesRoster[i].home:(i===16?"Sol Reach":prefixes[Math.floor(rnd()*prefixes.length)]+" "+endings[Math.floor(rnd()*endings.length)]+" "+String(i+1).padStart(3,"0"));
+  const habit=Math.floor(rnd()*101),tags=[];
+  if(rnd()<.18)tags.push("ancient ruins");if(rnd()<.16)tags.push("nebula");if(rnd()<.13)tags.push("pirate activity");if(rnd()<.08)tags.push("dead world");
+  systems.push({id:"sys-"+String(i+1).padStart(3,"0"),name:name,x:Math.round(Math.cos(angle)*rad),y:Math.round(Math.sin(angle)*rad),owner:faction,ownerSpeciesId:faction,kind:i<16?"Capital":(tags.includes("ancient ruins")?"Anomaly":(rnd()<.35?"Mining":(habit>65?"Frontier":"Wildspace"))),wealth:2+Math.floor(rnd()*5),minerals:1+Math.floor(rnd()*5),planet:habit>10?name.split(" ")[0]+" Prime":"No stable biosphere",habit:habit,population:Math.floor(rnd()*80),starClass:["O","B","A","F","G","K","M"][Math.floor(rnd()*7)],danger:Math.floor(rnd()*101),richness:20+Math.floor(rnd()*81),tags:tags,lanes:[],desc:"Unsurveyed system. Scan local space and assess its strategic value."});
+ }
+ for(let i=0;i<200;i++){
+  const links=new Set(["sys-"+String((i+1)%200+1).padStart(3,"0"),"sys-"+String((i+199)%200+1).padStart(3,"0")]);
+  for(let j=0;j<200&&links.size<4;j++){if(i===j)continue;const dx=systems[i].x-systems[j].x,dy=systems[i].y-systems[j].y;if(dx*dx+dy*dy<460&&rnd()<.16)links.add(systems[j].id)}
+  systems[i].lanes=Array.from(links);
+ }
+ // Hyperlanes are bidirectional; reconcile any extra edge created from only one endpoint.
+ for(const x of systems){for(const id of [...x.lanes]){const other=systems.find(z=>z.id===id);if(other&&!other.lanes.includes(x.id))other.lanes.push(x.id)}}
+ for(const x of systems){const owner=speciesRoster.find(f=>f.id===x.owner);if(owner)x.desc=owner.name+" holds this system. Their doctrine favours "+owner.bonus.toLowerCase()+".";else if(x.tags.length)x.desc="Long-range sensors detect "+x.tags.join(", ")+". A prepared captain may find a fortune—or a grave.";else x.desc="A frontier system with trade index "+x.wealth+", mineral deposits "+x.minerals+" and "+x.habit+"% habitability."}
+ return systems;
+}
+const baseSystems=makeGalaxy();
+const fresh=()=>{
+ const seed=Math.floor(Date.now()%4294967295)||418204;const systems=makeGalaxy(seed),home=systems[16];home.owner="you";home.ownerSpeciesId=null;home.kind="Core";home.habit=90;home.wealth=3;home.minerals=3;home.planet="Terra Nova";home.desc="Your first independent haven: a battered orbital port, one ship, old debt and a whole galaxy of opportunity.";home.buildings={mine:1,trade:0,lab:0,defense:0};home.stability=85;
+ const skills={exploration:0,command:0,commerce:0,diplomacy:0,engineering:0},relations={};speciesRoster.forEach(f=>relations[f.id]=f.id==="solari"?15:0);
+ return{seed:seed,turn:1,credits:120,minerals:35,debt:60,science:0,voidShards:0,cosmetics:[],equippedCosmetic:null,rep:0,xp:0,totalXp:0,level:1,perkPoints:0,perks:{},skills:skills,health:100,system:home.id,known:[home.id,...home.lanes],claimed:[home.id],visited:[home.id],policy:"balanced",techs:{},ships:[{id:1,name:"Wayfarer",type:"Flagship",hp:30,maxHp:30,attack:7,cargo:8}],nextShip:2,systems:systems,relations:relations,treaties:[],contracts:[],companions:[],log:["Turn 1: You leave port under a cloud of debt."],flags:{},captain:"The Wayfarer"};
+};let s;let galaxyZoom=1,galaxyPanX=0,galaxyPanY=0,mapDrag=null,mapDragMoved=false;
+const PERKS=[
+{id:"pathfinder",name:"Pathfinder",tree:"Scouting",max:3,desc:"+20% exploration rewards per rank."},
+{id:"vanguard",name:"Vanguard",tree:"Command",max:3,desc:"+2 fleet attack per rank."},
+{id:"merchant",name:"Black-Market Savant",tree:"Commerce",max:3,desc:"+12% trade income per rank."},
+{id:"quartermaster",name:"Quartermaster",tree:"Engineering",max:3,desc:"Reduce repair costs by 15% per rank."},
+{id:"charisma",name:"Charismatic Leader",tree:"Leadership",max:3,desc:"+1 companion capacity per rank."},
+{id:"diplomat",name:"Silver Tongue",tree:"Diplomacy",max:3,desc:"Envoys are cheaper and improve standing faster."},
+{id:"industrialist",name:"Frontier Industrialist",tree:"Stewardship",max:3,desc:"+12% passive credit income per rank."},
+{id:"fieldmedic",name:"Field Medic",tree:"Survival",max:3,desc:"Regenerate additional health every third turn."},
+{id:"raider",name:"Void Reaver",tree:"Command",max:3,desc:"More salvage and reputation from victories."},
+{id:"engineer",name:"Master Engineer",tree:"Engineering",max:3,desc:"New ships gain +2 hull per rank; repairs are cheaper."},
+{id:"tactician",name:"Battle Tactician",tree:"Command",max:3,desc:"Reduce damage when a battle turns against you."},
+{id:"governor",name:"Civic Governor",tree:"Stewardship",max:3,desc:"+1 mineral production per owned system per rank."}
+];
+const SHIP_MODULES=[
+{id:"weapon",name:"Weapon Arrays",credits:25,minerals:8,desc:"+2 fleet attack per level"},
+{id:"armor",name:"Layered Armour",credits:20,minerals:12,desc:"+5 maximum hull per level"},
+{id:"shields",name:"Shield Projectors",credits:22,minerals:10,desc:"Reduce fleet damage by 2 per level"},
+{id:"sensors",name:"Survey Sensors",credits:18,minerals:8,desc:"+2 science per newly-charted system"},
+{id:"cargo",name:"Modular Cargo",credits:15,minerals:10,desc:"+3 cargo capacity per level"}
+];
+const MILESTONES=[
+{id:"chart",name:"Map the frontier",desc:"Chart 10 systems.",credits:20,xp:10,skill:"exploration"},
+{id:"crew",name:"Build your retinue",desc:"Recruit your first companion.",credits:15,xp:8,skill:"command"},
+{id:"outpost",name:"First foothold",desc:"Control at least two systems.",credits:30,xp:12,skill:"engineering"},
+{id:"fleet",name:"Captain of a fleet",desc:"Build or acquire a second ship.",credits:20,xp:10,skill:"command"},
+{id:"research",name:"Knowledge is power",desc:"Research your first technology.",credits:25,xp:12,skill:"engineering"},
+{id:"treaty",name:"A fragile peace",desc:"Secure a diplomatic treaty.",credits:35,xp:12,skill:"diplomacy"},
+{id:"sector",name:"Sector power",desc:"Control five systems.",credits:70,xp:20,skill:"engineering"},
+{id:"captain5",name:"A name in the void",desc:"Reach captain level 5.",credits:50,xp:15,skill:"command"}
+];
+
+const STORY_CHAPTERS=[
+{id:"survey",title:"01 · Ghosts on the Chart",objective:"Visit 5 distinct star systems.",hint:"Follow adjacent hyperlanes and survey each arrival.",lead:"A repeating signal appears in the static. Five systems carry the same impossible timestamp.",reward:"40 credits · 5 Void Shards",credits:40,shards:5,xp:10,skill:"exploration"},
+{id:"retinue",title:"02 · A Crew Worth Keeping",objective:"Recruit 1 companion and command 2 ships.",hint:"Hire a specialist, then build a scout or frigate in Fleet.",lead:"The signal resolves into a route-map fragment. You need a crew and a ship able to survive the crossing.",reward:"35 credits · 5 Void Shards",credits:35,shards:5,xp:10,skill:"command"},
+{id:"frontier",title:"03 · A Place to Stand",objective:"Control 3 systems and research 1 technology.",hint:"Claim habitable neutral systems and invest in research.",lead:"The first shard opens a transit gate. The frontier will only recognise an empire that can hold ground.",reward:"60 credits · 8 Void Shards",credits:60,shards:8,xp:14,skill:"engineering"},
+{id:"concord",title:"04 · The Constellation Compact",objective:"Secure 2 treaties and reach level 5.",hint:"Send envoys from Empire and gain trust with neighbouring powers.",lead:"Three rival archives mention a crown that can command an ancient network. None agrees who should wear it.",reward:"100 credits · 10 Void Shards",credits:100,shards:10,xp:18,skill:"diplomacy"},
+{id:"ascendant",title:"05 · The Silent Crown",objective:"Hold 10 systems, research 5 technologies, command 4 ships, secure 3 treaties and reach level 10.",hint:"Develop an economy, keep allies, and build enough force to reach the crown system.",lead:"The crown is not a throne. It is an authority switch for a machine buried beneath a star.",reward:"250 credits · 25 Void Shards",credits:250,shards:25,xp:35,skill:"command"}
+];
+function storyProgress(stage){
+ const owned=s.systems.filter(x=>x.owner==="you").length,researched=Object.values(s.techs||{}).filter(Boolean).length;
+ if(stage===0)return Math.min(1,new Set(s.visited||[]).size/5);
+ if(stage===1)return Math.min(1,((s.companions.length?1:0)+(s.ships.length>=2?1:0))/2);
+ if(stage===2)return Math.min(1,(Math.min(3,owned)/3+Math.min(1,researched))/2);
+ if(stage===3)return Math.min(1,(Math.min(2,s.treaties.length)/2+Math.min(1,s.level/5))/2);
+ if(stage===4)return Math.min(1,(Math.min(10,owned)/10+Math.min(5,researched)/5+Math.min(4,s.ships.length)/4+Math.min(3,s.treaties.length)/3+Math.min(10,s.level)/10)/5);
+ return 1;
+}
+function storyChapterComplete(stage){
+ const owned=s.systems.filter(x=>x.owner==="you").length,researched=Object.values(s.techs||{}).filter(Boolean).length;
+ if(stage===0)return new Set(s.visited||[]).size>=5;
+ if(stage===1)return s.companions.length>=1&&s.ships.length>=2;
+ if(stage===2)return owned>=3&&researched>=1;
+ if(stage===3)return s.treaties.length>=2&&s.level>=5;
+ return owned>=10&&researched>=5&&s.ships.length>=4&&s.treaties.length>=3&&s.level>=10;
+}
+function updateStoryArc(){
+ if(!s||!s.flags)return;
+ let stage=Math.max(0,Math.min(STORY_CHAPTERS.length,Number(s.flags.storyStage)||0));
+ while(stage<STORY_CHAPTERS.length&&storyChapterComplete(stage)){
+  const chapter=STORY_CHAPTERS[stage];
+  s.credits+=chapter.credits;s.voidShards=(s.voidShards||0)+chapter.shards;
+  s.flags.storyStage=stage+1;
+  if(stage===STORY_CHAPTERS.length-1)s.flags.storyComplete=true;
+  say("CHRONICLE ADVANCE: "+chapter.title+". "+chapter.lead+" Reward: "+chapter.credits+" credits and "+chapter.shards+" Void Shards.");
+  gainXp(chapter.xp,chapter.skill);stage++;
+ }
+ s.flags.storyStage=stage;
+}
+function renderStoryArc(){
+ const host=$("#story-chapters");if(!host||!s)return;
+ const stage=Math.max(0,Math.min(STORY_CHAPTERS.length,Number(s.flags.storyStage)||0));
+ $("#deck-rank").textContent=captainRank().toUpperCase();
+ $("#deck-turn").textContent="TURN "+String(s.turn).padStart(2,"0");
+ $("#story-phase").textContent=stage>=STORY_CHAPTERS.length?"EPILOGUE":"CHAPTER "+String(stage+1).padStart(2,"0")+" / 05";
+ $("#story-lead").textContent=stage>=STORY_CHAPTERS.length?"The Silent Crown is awake. You command the frontier, but the consequences of your rule will continue to shape it.":STORY_CHAPTERS[stage].lead;
+ if(stage>=STORY_CHAPTERS.length){host.innerHTML='<div class="story-complete"><b>THE CROWN IS YOURS.</b><br>Campaign objective completed. The galaxy remains playable: expand, trade, explore, improve relations or test your power against the remaining factions.</div>';return}
+ host.innerHTML=STORY_CHAPTERS.map((c,i)=>{
+  const done=i<stage,active=i===stage,progress=done?1:active?storyProgress(i):0;
+  return '<div class="chronicle-step '+(done?'done':active?'active':'')+'"><div class="chronicle-index">'+(done?'✓':String(i+1).padStart(2,"0"))+'</div><div><b>'+c.title+(active?' · ACTIVE':'')+'</b><p>'+c.objective+'</p><p>'+(done?'Completed':active?c.hint:c.reward)+'</p><div class="chronicle-progress"><i style="width:'+Math.round(progress*100)+'%"></i></div></div></div>'
+ }).join("");
+}
+
+const BUILDINGS=[
+{id:"mine",name:"Mining Complex",credits:20,minerals:8,cap:3,output:"+2 minerals/turn"},
+{id:"trade",name:"Trade Hub",credits:25,minerals:5,cap:3,output:"+4 credits/turn"},
+{id:"lab",name:"Research Lab",credits:30,minerals:12,cap:3,output:"+3 science/turn"},
+{id:"defense",name:"Orbital Bastion",credits:35,minerals:15,cap:3,output:"+3 local defence"}
+];
+const TECHNOLOGIES=[
+{id:"deep_survey",name:"Deep-Space Survey Arrays",cost:25,desc:"Exploration pays better, and survey data is more valuable."},
+{id:"industrial_automation",name:"Industrial Automation",cost:35,desc:"Every owned system produces +1 mineral per turn."},
+{id:"reinforced_hulls",name:"Reinforced Hulls",cost:40,desc:"All ships gain +8 maximum hull and new ships are tougher."},
+{id:"naval_gunnery",name:"Vector Gunnery",cost:45,desc:"Fleet encounters gain +3 attack power."},
+{id:"diplomatic_corps",name:"Permanent Diplomatic Corps",cost:40,desc:"Envoys are cheaper and improve standing faster."},
+{id:"logistics_network",name:"Interstellar Logistics",cost:50,desc:"Companion wages fall by 1 credit per turn."},
+{id:"orbital_annihilator",name:"Oblivion Engine",cost:140,desc:"Unlocks a catastrophic orbital weapon with severe diplomatic, ecological and political consequences."}
+];
+const COMPANION_POOL=[
+{id:"mara",name:"Mara Venn",species:"solari",role:"Pathfinder",skill:"exploration",cost:28,bonus:"Exploration",attack:1,wage:2,description:"A veteran route-scout who can smell a profitable anomaly through a nebula."},
+{id:"brakk",name:"Brakk Thorne",species:"varkesh",role:"Tactician",skill:"command",cost:36,bonus:"Combat",attack:4,wage:3,description:"A disciplined fleet officer who survived three disastrous campaigns."},
+{id:"sira",name:"Sira Quell",species:"vel",role:"Factor",skill:"commerce",cost:32,bonus:"Trade",attack:0,wage:2,description:"An information broker with contacts in almost every independent port."},
+{id:"ix",name:"IX-7",species:"axiom",role:"Engineer",skill:"engineering",cost:38,bonus:"Repairs",attack:2,wage:3,description:"A precise machine intelligence specialised in damage control and ship systems."},
+{id:"neme",name:"Neme-of-Reeds",species:"nacre",role:"Envoy",skill:"diplomacy",cost:34,bonus:"Diplomacy",attack:0,wage:2,description:"A calm mediator whose presence makes tense rooms quieter."},
+{id:"torv",name:"Torv Ashhand",species:"khepri",role:"Quartermaster",skill:"commerce",cost:30,bonus:"Logistics",attack:1,wage:2,description:"A foundry veteran who keeps crews supplied, paid and focused."},
+{id:"yara",name:"Yara Kest",species:"thren",role:"Survivor",skill:"exploration",cost:26,bonus:"Survival",attack:2,wage:2,description:"A frontier survivor who can turn a wreck site into a habitable camp."},
+{id:"the-choir",name:"The Choir Fragment",species:"mycel",role:"Analyst",skill:"diplomacy",cost:42,bonus:"Research",attack:1,wage:3,description:"A mobile shard of a distributed consciousness, curious about individual choice."}
+];
+function xpRequired(level){return 30+level*20}
+function perkRank(id){return Number((s.perks||{})[id]||0)}
+function companionSkillRank(skill){return(s.companions||[]).filter(c=>c.skill===skill).reduce((n,c)=>n+Math.max(1,c.rank||1),0)}
+function hasCompanionSkill(skill){return companionSkillRank(skill)>0}
+const COMPANION_AMBITIONS={exploration:"Chart the unknown",commerce:"Build a fortune",command:"Earn command respect",diplomacy:"Forge lasting peace",engineering:"Build a lasting legacy",survival:"Return from the void"};
+function companionAmbition(c){return COMPANION_AMBITIONS[c.skill]||"Find a place among the stars"}
+function addCompanionXp(c,amount,reason){
+ if(!c)return;c.rank=c.rank||1;c.xp=c.xp||0;c.ambition=c.ambition||{progress:0,complete:false};const earned=Math.max(0,amount|0);c.xp+=earned;if(reason===c.skill&&!c.ambition.complete){c.ambition.progress=(c.ambition.progress||0)+earned;if(c.ambition.progress>=18){c.ambition.complete=true;c.loyalty=Math.min(100,(c.loyalty||75)+10);s.credits+=12;s.rep+=1;say(c.name+" completed a personal ambition: "+companionAmbition(c)+". Loyalty +10 and 12 credits.")}}
+ while(c.rank<5&&c.xp>=10+c.rank*8){c.xp-=10+c.rank*8;c.rank++;c.loyalty=Math.min(100,(c.loyalty||75)+4);say(c.name+" advanced to companion rank "+c.rank+" through "+reason+".")}
+ if(c.rank>=5)c.xp=0;
+}
+function gainXp(amount,skill){
+ if(!s.skills)s.skills={exploration:0,command:0,commerce:0,diplomacy:0,engineering:0};
+ if(skill)s.skills[skill]=(s.skills[skill]||0)+amount;
+ const extra=skill==="exploration"?Math.floor(companionSkillRank("exploration")/2):0;
+ const gained=Math.max(0,Math.round(amount*(1+perkRank("pathfinder")*.2)+(s.techs.deep_survey&&skill==="exploration"?2:0)+extra));
+ s.xp=(s.xp||0)+gained;s.totalXp=(s.totalXp||0)+gained;if(skill)(s.companions||[]).filter(c=>c.skill===skill).forEach(c=>addCompanionXp(c,Math.max(1,Math.floor(amount/3)),skill));let leveled=0;
+ while(s.xp>=xpRequired(s.level||1)){s.xp-=xpRequired(s.level||1);s.level=(s.level||1)+1;s.perkPoints=(s.perkPoints||0)+1;leveled++}
+ if(leveled)say("LEVEL UP: level "+s.level+". Choose a perk on the Captain tab.");
+}
+function choosePerk(id){const p=PERKS.find(x=>x.id===id);if(!p||s.perkPoints<1)return;const rank=perkRank(id);if(rank>=p.max)return;s.perks[id]=rank+1;s.perkPoints--;say("Perk chosen: "+p.name+" rank "+s.perks[id]+".");if(id==="fieldmedic")s.health=Math.min(100,s.health+3);render()}
+function factionName(id){const f=speciesRoster.find(x=>x.id===id);return id==="you"?"Your empire":(f?f.name:(id||"Unclaimed"))}
+function captainRank(){if(s.level>=20)return"Void Sovereign";if(s.level>=15)return"Sector Warlord";if(s.level>=10)return"Fleet Marshal";if(s.level>=6)return"Free Captain";if(s.level>=3)return"Rising Captain";return"Debtor-Captain"}
+function companionLimit(){return Math.min(5,2+perkRank("charisma"))}
+function companionAttack(){return(s.companions||[]).reduce((n,c)=>n+(c.attack||0)+Math.max(0,(c.rank||1)-1),0)}
+function repairMultiplier(){return Math.max(.3,1-perkRank("quartermaster")*.15-perkRank("engineer")*.05-Math.min(.25,companionSkillRank("engineering")*.05))}
+function startDiplomacy(id){const f=speciesRoster.find(x=>x.id===id);if(!f)return;const cost=Math.max(5,15-perkRank("diplomat")*3-(s.techs.diplomatic_corps?5:0));if(s.credits<cost){say("An envoy requires "+cost+" credits.");render();return}s.credits-=cost;const bump=10+perkRank("diplomat")*8+(s.techs.diplomatic_corps?8:0)+companionSkillRank("diplomacy")*3;s.relations[id]=Math.min(100,(s.relations[id]||0)+bump);if(s.relations[id]>=50&&!s.treaties.includes(id)){s.treaties.push(id);say(f.name+" signed a non-aggression and trade pact with your empire.")}else say("Your envoy opened talks with "+f.name+". Standing improved by "+bump+".");gainXp(5,"diplomacy");render()}
+function recruitCompanion(id){const c=COMPANION_POOL.find(x=>x.id===id);if(!c||s.companions.some(x=>x.id===id))return;if(s.companions.length>=companionLimit()){say("Your retinue is full. Gain Charismatic Leader perks to recruit more.");render();return}if(s.credits<c.cost){say(c.name+" requires "+c.cost+" credits.");render();return}s.credits-=c.cost;s.companions.push({...c,rank:1,xp:0,ambition:{progress:0,complete:false},loyalty:75});say(c.name+" joined your retinue as "+c.role+".");gainXp(4,"command");render()}
+function dismissCompanion(id){const i=s.companions.findIndex(c=>c.id===id);if(i<0)return;const name=s.companions[i].name;s.companions.splice(i,1);say(name+" left the retinue.");render()}
+function renderPerks(){$("#perkpoints").textContent=s.perkPoints>0?"You have "+s.perkPoints+" perk point"+(s.perkPoints===1?"":"s")+" to spend. Every rank changes your play style.":"No unspent points. Earn XP through exploration, trade, command, engineering and diplomacy." ;$("#perks").innerHTML=PERKS.map(p=>{const rank=perkRank(p.id),disabled=s.perkPoints<1||rank>=p.max;return '<div class="perk-card"><div class="row"><h3>'+p.name+'</h3><span class="pill">Rank '+rank+'/'+p.max+'</span></div><div class="tagrow"><span class="tag">'+p.tree+'</span></div><p>'+p.desc+'</p><button data-perk="'+p.id+'" '+(disabled?'disabled':'')+'>'+(rank>=p.max?'Mastered':s.perkPoints>0?'Choose perk':'Unlock at level-up')+'</button></div>'}).join("")}
+function renderCompanions(){
+ $("#partycount").textContent=s.companions.length+" / "+companionLimit();
+ $("#party").innerHTML=s.companions.length?s.companions.map(c=>{
+  c.ambition=c.ambition||{progress:0,complete:false};const ambition=companionAmbition(c);
+  return '<div class="companion"><div class="row"><h3>'+c.name+'</h3><span class="pill">'+c.role+'</span></div><p>'+c.description+'</p><div class="objective"><b>Personal ambition · '+ambition+'</b><p class="muted">Earn relevant experience from matching assignments.</p><small class="muted">'+(c.ambition.complete?'Complete · +12 credits · +10 loyalty':Math.min(18,c.ambition.progress||0)+'/18 XP')+'</small></div><div class="tagrow"><span class="tag">'+c.bonus+'</span><span class="tag">Rank '+(c.rank||1)+'/5</span><span class="tag">XP '+(c.xp||0)+'/'+(10+(c.rank||1)*8)+'</span><span class="tag">Wage '+c.wage+'/turn</span><span class="tag">Loyalty '+c.loyalty+'</span></div><div class="meter"><i style="width:'+c.loyalty+'%"></i></div><div class="actions"><button data-dismiss="'+c.id+'">Dismiss</button></div></div>'
+ }).join(""):'<p class="muted">No companions recruited yet. Hire a specialist below.</p>';
+ $("#recruits").innerHTML=COMPANION_POOL.filter(c=>!s.companions.some(x=>x.id===c.id)).map(c=>{const f=speciesRoster.find(x=>x.id===c.species),full=s.companions.length>=companionLimit();return '<div class="companion"><div class="row"><h3>'+c.name+'</h3><span class="pill">'+c.role+'</span></div><p>'+c.description+'</p><div class="tagrow"><span class="tag">'+(f?f.name:c.species)+'</span><span class="tag">'+c.bonus+'</span><span class="tag">Hire '+c.cost+'</span></div><button data-recruit="'+c.id+'" '+(full||s.credits<c.cost?'disabled':'')+'>'+(full?'Retinue full':s.credits<c.cost?'Need more credits':'Recruit companion')+'</button></div>'}).join("")||'<p class="muted">All available companions are already with you.</p>';
+}
+function combatPower(){
+ return s.ships.reduce((sum,ship)=>sum+(ship.hp>0?ship.attack:0),0)+2*perkRank("vanguard")+(s.techs.naval_gunnery?3:0)+companionAttack()+(hasCompanionSkill("command")?2:0);
+}
+function startBattle(){
+ if(s.battle&&s.battle.active){say("A hostile contact is already engaged. Issue a tactical command.");render();return}
+ if(!s.ships.some(ship=>ship.hp>0)){say("No operational ships remain. Repair a disabled hull before entering combat.");render();return}
+ const here=sys(),hostile=!!here.owner&&here.owner!=="you",f=speciesRoster.find(x=>x.id===here.owner);
+ const maxHp=18+Math.floor((here.danger||0)/6)+(s.turn%5)*2+(hostile?7:0);
+ s.battle={active:true,round:1,systemId:here.id,enemy:{name:hostile?(f?f.name:"Hostile")+" patrol":(here.tags||[]).includes("pirate activity")?"Pirate flotilla":"Unknown raider flotilla",hp:maxHp,maxHp:maxHp,attack:4+Math.floor((here.danger||0)/20)+(hostile?2:0),armor:Math.floor((here.danger||0)/45)},feed:[]};
+ say("TACTICAL CONTACT: "+s.battle.enemy.name+" has intercepted the fleet. Choose an order in the Fleet tab.");render();
+}
+function resolveBattleMove(move){
+ const b=s.battle;if(!b||!b.active){say("No active encounter. Start a hostile encounter from the Fleet tab.");render();return}
+ if(move==="retreat"){b.active=false;b.retreated=true;s.rep=Math.max(-100,s.rep-1);say("Fleet disengaged. No salvage recovered.");render();return}
+ const e=b.enemy,base=combatPower();
+ let damageMultiplier=1,incomingMultiplier=1,report="Attack: standard firing solution.";
+ if(move==="focus"){damageMultiplier=1.45;incomingMultiplier=1.25;report="Focus fire: +45% damage, +25% incoming damage."}
+ else if(move==="brace"){damageMultiplier=.72;incomingMultiplier=.45;report="Brace formation: lower output, sharply reduced retaliation."}
+ else if(move==="board"){if(e.hp/e.maxHp>.65){damageMultiplier=.55;incomingMultiplier=1.35;report="Boarding craft repelled by intact point defences."}else{damageMultiplier=1.5;incomingMultiplier=1.15;report="Boarding party penetrates weakened armour and cargo bays."}}
+ const dealt=Math.max(1,Math.round(base*damageMultiplier-Math.max(0,e.armor||0)));
+ e.hp=Math.max(0,e.hp-dealt);b.feed.unshift("Round "+b.round+": "+report+" Hostile hull -"+dealt+".");
+ if(e.hp<=0){
+  b.active=false;b.won=true;const salvage=20+Math.floor(e.maxHp/3)+perkRank("raider")*4;s.credits+=salvage;s.minerals+=2+perkRank("raider");s.rep+=2+perkRank("raider");gainXp(12,"command");
+  if(move==="board"){s.credits+=12;s.minerals+=4;b.feed.unshift("Boarding teams secured additional cargo.")};
+  say("TACTICAL VICTORY: "+e.name+" disabled. Salvage recovered: "+salvage+" credits.");render();return;
+ }
+ const available=s.ships.filter(ship=>ship.hp>0);
+ if(!available.length){b.active=false;b.won=false;b.defeated=true;s.rep=Math.max(-100,s.rep-3);say("Fleet is disabled. The encounter is lost; repair or construct an operational hull before fighting again.");render();return}
+ const target=available.sort((a,z)=>a.hp/a.maxHp-z.hp/z.maxHp)[0];
+ const shield=(target.shield||0)+(target.modules&&target.modules.shields||0)*2;
+ const armour=(target.armor||0)+(target.modules&&target.modules.armor||0);
+ const defence=sys().owner==="you"?(sys().buildings&&sys().buildings.defense||0)*2:0;
+ const retaliation=Math.max(1,Math.round(((e.attack||1)-shield-defence-armour)*incomingMultiplier));
+ target.hp=Math.max(0,target.hp-retaliation);
+ b.feed.unshift(e.name+" retaliates. "+target.name+" hull -"+retaliation+".");
+ if(target.hp===0)b.feed.unshift(target.name+" is disabled and must be repaired before it can fight again.");
+ if(!s.flags.reducedGore)b.feed.unshift("Armour ruptures in a spray of sparks and blood as emergency bulkheads slam shut.");
+ b.round++;if(b.feed.length>5)b.feed.length=5;
+ if(!s.ships.some(ship=>ship.hp>0)){b.active=false;b.won=false;b.defeated=true;s.rep=Math.max(-100,s.rep-3);say("DEFEAT: the fleet has been disabled. Repair the surviving hulls or build a replacement before another encounter.");render();return}
+ say("Round "+(b.round-1)+" resolved. "+target.name+" lost "+retaliation+" hull.");render();
+}
+function shipIllustration(type){
+ const t=String(type||"").toLowerCase(),hostile=t.includes("hostile")||t.includes("raider")||t.includes("pirate");
+ const stroke=hostile?"#e8878d":"#a8d5e2",glow=hostile?"#ff6474":"#75e7fb";
+ let hull,wing;
+ if(t.includes("frigate")){hull="M14 38 L44 26 L75 26 L94 13 L115 18 L138 32 L166 37 L138 42 L115 56 L94 61 L75 50 L44 50 Z";wing="M48 30 L63 9 L88 24 M48 47 L63 66 L88 52"}
+ else if(t.includes("flagship")){hull="M12 38 L42 31 L64 15 L89 23 L119 20 L151 32 L169 38 L151 44 L119 56 L89 53 L64 61 L42 45 Z";wing="M41 31 L46 12 L67 23 M41 45 L46 64 L67 52"}
+ else if(hostile){hull="M11 38 L42 22 L67 32 L88 9 L100 30 L132 21 L169 38 L131 52 L100 46 L88 67 L67 44 L42 54 Z";wing="M46 27 L33 9 L61 28 M46 50 L29 66 L62 46"}
+ else{hull="M12 38 L49 28 L83 19 L104 27 L136 32 L167 38 L136 44 L104 49 L83 57 L49 47 Z";wing="M55 29 L68 12 L98 27 M55 47 L68 64 L98 49"}
+ return '<svg viewBox="0 0 180 76" aria-hidden="true" focusable="false"><path d="M2 38H178" fill="none" stroke="#42627b" stroke-dasharray="2 5"/><ellipse cx="16" cy="38" rx="20" ry="11" fill="'+glow+'" opacity=".12"/><path d="'+hull+'" fill="'+(hostile?"#482a3a":"#2b4257")+'" stroke="'+stroke+'" stroke-width="1.4" stroke-linejoin="round"/><path d="'+wing+'" fill="none" stroke="'+stroke+'" stroke-width="2" stroke-linejoin="round"/><path d="M86 29L108 34L138 37L108 41L86 47L96 38Z" fill="#d0e5eb" fill-opacity=".72"/><path d="M99 34L127 37L99 40Z" fill="'+glow+'"/><path d="M52 35L75 31M52 43L75 47M113 29L129 34M113 47L129 42" fill="none" stroke="'+stroke+'" stroke-opacity=".72"/><ellipse cx="13" cy="38" rx="4" ry="8" fill="'+glow+'"/><path d="M17 38H1" stroke="'+glow+'" stroke-width="2" opacity=".65"/></svg>';
+}
+function renderPlanetArt(system){
+ const faction=system.owner&&system.owner!=="you"?speciesRoster.find(f=>f.id===system.owner):null;
+ const accent=system.owner==="you"?"#f6c76b":faction?faction.color:"#6de4ff";
+ const dry=system.habit<25||system.kind==="Cataclysmic Ruin",radius=36+Math.round((system.habit||0)/12),rings=system.starClass==="G"||system.starClass==="F"||system.starClass==="K";
+ const rock=dry?"#8b8278":"#567f97",baseName=system.owner==="you"?"YOUR TERRITORY":faction?faction.name.toUpperCase():system.owner?"CONTESTED":"UNCLAIMED";
+ return '<div class="planet-panel"><svg viewBox="0 0 320 154" role="img" aria-label="Stylised system illustration for '+escapeHtml(system.name)+'"><defs><radialGradient id="pbg" cx="42%" cy="45%" r="80%"><stop stop-color="#17364d"/><stop offset="1" stop-color="#060d19"/></radialGradient><radialGradient id="world" cx="30%" cy="25%" r="80%"><stop stop-color="'+(dry?"#c4b7a0":"#bad9df")+'"/><stop offset=".24" stop-color="'+rock+'"/><stop offset=".72" stop-color="'+(dry?"#4b4b53":"#2d526c")+'"/><stop offset="1" stop-color="#101c2c"/></radialGradient><clipPath id="worldclip"><circle cx="168" cy="78" r="'+radius+'"/></clipPath></defs><rect width="320" height="154" fill="url(#pbg)"/><g fill="#d5e8f0" opacity=".72"><circle cx="23" cy="24" r="1"/><circle cx="75" cy="15" r="1.2"/><circle cx="112" cy="37" r=".8"/><circle cx="277" cy="24" r="1.2"/><circle cx="299" cy="69" r=".8"/><circle cx="33" cy="110" r="1.1"/><circle cx="92" cy="132" r=".8"/><circle cx="247" cy="127" r="1.2"/><circle cx="291" cy="113" r=".8"/></g><circle cx="168" cy="78" r="'+(radius+7)+'" fill="none" stroke="'+accent+'" stroke-opacity=".25" stroke-width="1"/>'+(rings?'<ellipse cx="168" cy="78" rx="'+(radius+24)+'" ry="13" fill="none" stroke="'+accent+'" stroke-opacity=".6" stroke-width="4" transform="rotate(-14 168 78)"/>':'')+'<circle cx="168" cy="78" r="'+radius+'" fill="url(#world)" stroke="'+accent+'" stroke-opacity=".72" stroke-width="1.2"/><g clip-path="url(#worldclip)" fill="none" stroke="'+(dry?"#d6b99c":"#a4dbe0")+'" stroke-opacity=".3"><path d="M112 46q35 23 70 3t49 4" stroke-width="5"/><path d="M111 67q31 17 69 4t47 4" stroke-width="7"/><path d="M115 98q30-16 60-2t49-3" stroke-width="4"/><path d="M141 35q-10 29 7 49t-4 52" stroke-width="5"/></g>'+(dry?'<path d="M143 54l13 7-5 9 13 8-8 8 16 13M184 48l-7 12 9 8-10 12 13 8" fill="none" stroke="#d7a18f" stroke-width="2" stroke-opacity=".8"/>':'')+'<path d="M20 132H91M20 128v8M91 128v8" stroke="#4c7693" fill="none"/><text x="20" y="121" font-family="ui-monospace,monospace" font-size="8" fill="#83a9bd" letter-spacing="1.4">'+(dry?"LOW BIOSPHERE":"HABITABLE ZONE")+'</text><text x="20" y="146" font-family="ui-monospace,monospace" font-size="8" fill="#6b8ea6" letter-spacing="1">SCANNER VIEW / '+String(system.id||"").toUpperCase()+'</text><g stroke="'+accent+'" fill="none" opacity=".75"><path d="M246 38h32v12M278 38v12M246 38v12M246 116h32v-12M278 104v12"/></g><circle cx="168" cy="78" r="2" fill="'+accent+'"/></svg><div class="planet-caption"><span>'+escapeHtml(system.name)+'</span><span>'+baseName+'</span></div></div>';
+}
+function renderBattle(){
+ const panel=$("#battle-panel");if(!panel)return;const b=s.battle;
+ if(!b||!b.active){
+  const label=b&&b.won?"Victory":b&&b.retreated?"Disengaged":"Standby";
+  panel.innerHTML='<div class="row"><h2>Combat bridge</h2><span class="pill">'+label+'</span></div><p class="muted">Issue a command each round. Focus fire deals more damage at greater risk; brace protects the weakest ship; board weakened targets for extra salvage; retreat to disengage.</p><button data-action="fight" class="primary">Start hostile encounter</button>';
+  return;
+ }
+ const e=b.enemy;
+ panel.innerHTML='<div class="row"><h2>TACTICAL CONTACT</h2><span class="pill">Round '+b.round+'</span></div><div class="battle-contact-visual">'+shipIllustration("hostile")+'<p><b>'+escapeHtml(e.name)+'</b><br><span class="muted">Unidentified hostile frame</span></p></div><div class="battle-portrait"><div class="row"><h3>'+escapeHtml(e.name)+'</h3><span class="pill">'+(e.hp/e.maxHp>.65?"Engaged":e.hp/e.maxHp>.25?"Critically damaged":"Near disabled")+'</span></div><div class="battle-hull"><i style="width:'+Math.max(0,100*e.hp/e.maxHp)+'%"></i></div><p class="muted">Enemy hull '+e.hp+'/'+e.maxHp+' · Attack '+e.attack+' · Armour '+e.armor+'</p></div><p class="muted">Your fleet attack '+combatPower()+' · Companions '+s.companions.length+' · Ships '+s.ships.length+'</p><div class="battle-actions"><button data-battle-move="attack" class="primary">Attack</button><button data-battle-move="focus">Focus fire</button><button data-battle-move="brace">Brace formation</button><button data-battle-move="board">Board target</button><button data-battle-move="retreat">Retreat</button></div><div class="battle-feed-list">'+(b.feed||[]).map(line=>'<div class="battle-feed">'+line+'</div>').join("")+'</div>';
+}
+function renderFleet(){
+ renderBattle();$("#ships").innerHTML=s.ships.map(sh=>{
+  sh.modules=sh.modules||{weapon:0,armor:0,shields:0,sensors:0,cargo:0};
+  return '<details class="ship-module"><summary><span class="ship-summary"><span class="ship-art">'+shipIllustration(sh.type)+'</span><span class="ship-meta"><strong>'+escapeHtml(sh.name)+' · '+escapeHtml(sh.type)+'</strong><small>HULL '+sh.hp+'/'+sh.maxHp+' · CLASS '+escapeHtml(sh.type).toUpperCase()+'</small></span></span></summary><p class="muted">Attack '+sh.attack+' · Cargo '+sh.cargo+' · Shield '+(sh.shield||0)+'</p><div class="meter"><i style="width:'+Math.min(100,100*sh.hp/sh.maxHp)+'%"></i></div><div class="tagrow">'+SHIP_MODULES.map(m=>'<span class="tag">'+m.name+' '+(sh.modules[m.id]||0)+'/3</span>').join("")+'</div><p class="muted">Install a module. Each successive rank costs more.</p><div class="actions">'+SHIP_MODULES.map(m=>{const rank=sh.modules[m.id]||0,c=m.credits*(rank+1),mi=m.minerals*(rank+1);return '<button data-refit-ship="'+sh.id+'" data-module="'+m.id+'" '+(rank>=3||s.credits<c||s.minerals<mi?'disabled':'')+'>'+m.name+' '+rank+'/3 · '+c+'C '+mi+'M</button>'}).join("")+'</div></details>';
+ }).join("");
+}
+function refitShip(shipId,moduleId){
+ const ship=s.ships.find(x=>x.id===Number(shipId)),m=SHIP_MODULES.find(x=>x.id===moduleId);if(!ship||!m)return;
+ ship.modules=ship.modules||{weapon:0,armor:0,shields:0,sensors:0,cargo:0};const rank=ship.modules[moduleId]||0,cost=m.credits*(rank+1),minerals=m.minerals*(rank+1);
+ if(rank>=3){say(m.name+" is at maximum rank on "+ship.name+".");render();return}
+ if(s.credits<cost||s.minerals<minerals){say("Refit requires "+cost+" credits and "+minerals+" minerals.");render();return}
+ s.credits-=cost;s.minerals-=minerals;ship.modules[moduleId]=rank+1;
+ if(moduleId==="weapon")ship.attack+=2;
+ if(moduleId==="armor"){ship.maxHp+=5;ship.hp+=5;ship.armor=(ship.armor||0)+1}
+ if(moduleId==="shields")ship.shield=(ship.shield||0)+2;
+ if(moduleId==="cargo")ship.cargo+=3;
+ say(m.name+" upgraded on "+ship.name+". "+m.desc+".");gainXp(4,"engineering");render();
+}
+function milestoneReached(id){
+ const controlled=s.systems.filter(x=>x.owner==="you").length;
+ if(id==="chart")return s.known.length>=10;
+ if(id==="crew")return s.companions.length>=1;
+ if(id==="outpost")return controlled>=2;
+ if(id==="fleet")return s.ships.length>=2;
+ if(id==="research")return Object.values(s.techs||{}).some(Boolean);
+ if(id==="treaty")return s.treaties.length>=1;
+ if(id==="sector")return controlled>=5;
+ if(id==="captain5")return s.level>=5;
+ return false;
+}
+function renderMilestones(){
+ const host=$("#milestones");if(!host)return;
+ host.innerHTML=MILESTONES.map(m=>{const done=!!s.flags.milestones?.[m.id];return '<div class="objective '+(done?'done':'')+'"><span class="check">'+(done?'✓':'○')+'</span><div><b>'+m.name+'</b><div class="muted">'+m.desc+'</div><small class="muted">Reward: '+m.credits+' credits · '+m.xp+' XP</small></div></div>'}).join("");
+}
+const COSMETIC_ITEMS=[{id:'aurora-hull',name:'Aurora Hull Finish',cost:10,description:'A cool cyan sheen for the flagship.'},{id:'imperial-sigil',name:'Imperial Sigil',cost:15,description:'A bespoke emblem for your empire profile.'},{id:'obsidian-throne',name:'Obsidian Command Theme',cost:20,description:'A dark, gold-accented command identity.'}];
+function renderShop(){const balance=$('#shard-balance'),host=$('#cosmetic-shop');if(!balance||!host||!s)return;balance.textContent=money(s.voidShards||0);host.innerHTML=COSMETIC_ITEMS.map(item=>{const owned=(s.cosmetics||[]).includes(item.id),equipped=s.equippedCosmetic===item.id;return '<div class="perk-card"><div class="row"><h3>'+item.name+'</h3><span class="pill">'+(owned?(equipped?'Equipped':'Owned'):item.cost+' VS')+'</span></div><p>'+item.description+'</p><p class="muted">Cosmetic only · no gameplay advantage</p><button data-cosmetic="'+item.id+'" '+(!owned&&(s.voidShards||0)<item.cost?'disabled':'')+'>'+(owned?(equipped?'Currently equipped':'Equip cosmetic'):'Unlock for '+item.cost+' Void Shards')+'</button></div>'}).join('')}
+function purchaseCosmetic(id){const item=COSMETIC_ITEMS.find(x=>x.id===id);if(!item)return;if(!Array.isArray(s.cosmetics))s.cosmetics=[];if(s.cosmetics.includes(id)){s.equippedCosmetic=id;say(item.name+' equipped.');render();return}if((s.voidShards||0)<item.cost){say('Not enough Void Shards for '+item.name+'. Earn more through campaign milestones.');render();return}s.voidShards-=item.cost;s.cosmetics.push(id);s.equippedCosmetic=id;say(item.name+' unlocked and equipped for '+item.cost+' Void Shards.');render()}
+function updateMilestones(){
+ if(!s||!s.flags)return;s.flags.milestones=s.flags.milestones||{};
+ for(const m of MILESTONES){if(!s.flags.milestones[m.id]&&milestoneReached(m.id)){s.flags.milestones[m.id]=true;s.credits+=m.credits;gainXp(m.xp,m.skill);const shardRewards={chart:10,crew:5,outpost:10,fleet:5,research:5,treaty:10,sector:20,captain5:10};const shardReward=shardRewards[m.id]||0;if(shardReward>0){s.voidShards=(s.voidShards||0)+shardReward;s.flags.shardMilestones=s.flags.shardMilestones||{};s.flags.shardMilestones[m.id]=true;say('VOID SHARD MILESTONE: +'+shardReward+' Void Shards.')}say('OBJECTIVE COMPLETE: '+m.name+'. Reward '+m.credits+' credits and '+m.xp+' XP.')}}
+ renderMilestones();
+}
+function renderEmpire(){
+ const controlled=s.systems.filter(x=>x.owner==="you");
+ $("#empirestats").innerHTML=[["Systems",controlled.length],["Habitable",controlled.filter(x=>x.habit>=40).length],["Ships",s.ships.length],["Treaties",s.treaties.length],["Science",s.science]].map(x=>'<div class="stat"><b>'+x[1]+'</b><small>'+x[0].toUpperCase()+'</small></div>').join("");
+ $("#worlds").innerHTML=controlled.map(x=>{
+  x.buildings=x.buildings||{mine:0,trade:0,lab:0,defense:0};if(x.stability===undefined)x.stability=70;
+  return '<details class="world-card"><summary>'+x.name+' · '+x.kind+' · Pop '+(x.population||0)+' · Stability '+x.stability+'</summary><p class="muted">'+x.habit+'% habitability · Trade '+x.wealth+' · Minerals '+x.minerals+' · '+(x.id===s.system?'Your current location':'Owned territory')+'</p><div class="tagrow">'+BUILDINGS.map(b=>'<span class="tag">'+b.name+' '+(x.buildings[b.id]||0)+'/'+b.cap+'</span>').join("")+'</div><p class="muted">Construct infrastructure to improve your economy or fortify this system.</p><div class="actions">'+BUILDINGS.map(b=>{const level=x.buildings[b.id]||0,c=b.credits+level*10,m=b.minerals+level*4;return '<button data-build-building="'+x.id+'" data-building-kind="'+b.id+'" '+(level>=b.cap||s.credits<c||s.minerals<m?'disabled':'')+'>'+b.name+' '+level+'/'+b.cap+' · '+c+'C '+m+'M</button>'}).join("")+'</div></details>';
+ }).join("")||'<p class="muted">No systems under your control yet. Claim an eligible unowned world from the Galaxy tab.</p>';
+ const p=s.policy||"balanced";
+ $("#policy-description").textContent=p==="industrial"?"Industrial: +25% mineral production.":p==="trade"?"Commercial: +25% credit income.":p==="research"?"Research: +30% science output.":"Balanced: no production bonuses or penalties.";
+ all("[data-policy]").forEach(b=>{b.classList.toggle("active",b.dataset.policy===p);b.classList.toggle("primary",b.dataset.policy===p)});
+ $("#technologies").innerHTML=TECHNOLOGIES.map(t=>'<div class="technology"><div class="row"><h3>'+t.name+'</h3><span class="pill">'+(s.techs[t.id]?"Researched":t.cost+" Science")+'</span></div><p>'+t.desc+'</p><button data-research="'+t.id+'" '+(s.techs[t.id]||s.science<t.cost?'disabled':'')+'>'+(s.techs[t.id]?"Technology acquired":"Research · "+t.cost+" science")+'</button></div>').join("");
+ $("#factions").innerHTML=speciesRoster.map(f=>{const rel=s.relations[f.id]||0,owned=s.systems.filter(x=>x.owner===f.id).length,cost=Math.max(5,15-perkRank("diplomat")*3-(s.techs.diplomatic_corps?5:0));return '<div class="faction" style="--faction-color:'+f.color+'"><div class="row"><div class="faction-head"><span class="faction-sigil">'+f.sigil+'</span><h3>'+f.name+'</h3></div><span class="pill">'+rel+' standing</span></div><p>'+f.style+' civilization · '+f.bonus+'. Systems: '+owned+(s.treaties.includes(f.id)?' · Treaty active':'')+'</p><div class="meter"><i style="width:'+rel+'%"></i></div><button data-diplomacy="'+f.id+'" '+(s.credits<cost||s.treaties.includes(f.id)?'disabled':'')+'>'+(s.treaties.includes(f.id)?'Treaty active':'Send envoy · '+cost+' credits')+'</button></div>'}).join("");
+}
+function buildBuilding(systemId,kind){
+ const x=s.systems.find(y=>y.id===systemId),b=BUILDINGS.find(y=>y.id===kind);if(!x||!b||x.owner!=="you")return;
+ x.buildings=x.buildings||{mine:0,trade:0,lab:0,defense:0};const level=x.buildings[kind]||0;
+ if(level>=b.cap){say(b.name+" is already at maximum level in "+x.name+".");render();return}
+ const credits=b.credits+level*10,minerals=b.minerals+level*4;
+ if(s.credits<credits||s.minerals<minerals){say("Construction requires "+credits+" credits and "+minerals+" minerals.");render();return}
+ s.credits-=credits;s.minerals-=minerals;x.buildings[kind]=level+1;x.stability=Math.min(100,(x.stability??70)+2);
+ say(b.name+" upgraded to level "+x.buildings[kind]+" in "+x.name+".");gainXp(5,"engineering");render();
+}
+function researchTechnology(id){
+ const t=TECHNOLOGIES.find(x=>x.id===id);if(!t||s.techs[id])return;
+ if(s.science<t.cost){say("Research requires "+t.cost+" science.");render();return}
+ s.science-=t.cost;s.techs[id]=true;gainXp(8,"engineering");say("Technology researched: "+t.name+".");
+ if(id==="reinforced_hulls")s.ships.forEach(ship=>{ship.maxHp+=8;ship.hp=Math.min(ship.maxHp,ship.hp+8)});
+ render();
+}
+function setPolicy(policy){if(!["balanced","industrial","trade","research"].includes(policy))return;s.policy=policy;say("Government policy changed to "+policy+".");render()}
+
+function renderGalaxyMap(){
+ const svg=$("#galaxy-svg");if(!svg)return;
+ const half=120/galaxyZoom,limit=Math.max(0,120-half+8);
+ galaxyPanX=Math.max(-limit,Math.min(limit,galaxyPanX));galaxyPanY=Math.max(-limit,Math.min(limit,galaxyPanY));
+ if(svg.setAttribute)svg.setAttribute("viewBox",(galaxyPanX-half)+" "+(galaxyPanY-half)+" "+(half*2)+" "+(half*2));
+ let content='<g>';
+ for(const x of s.systems){
+  for(const id of x.lanes){
+   if(x.id<id){
+    const y=s.systems.find(z=>z.id===id);if(!y)continue;
+    const lit=s.known.includes(x.id)&&s.known.includes(id);
+    content+='<line class="lane '+(lit?'lane-known':'')+'" x1="'+x.x+'" y1="'+x.y+'" x2="'+y.x+'" y2="'+y.y+'"/>';
+   }
+  }
+ }
+ for(const x of s.systems){
+  const known=s.known.includes(x.id),cls=x.id===s.system?'star-current':x.owner==="you"?'star-owned':known?'star-known':'star-hidden',faction=known&&x.owner&&x.owner!=="you"?speciesRoster.find(f=>f.id===x.owner):null;
+  content+='<circle class="'+cls+'" '+(faction?'style="fill:'+faction.color+';stroke:'+faction.color+'"':'')+' cx="'+x.x+'" cy="'+x.y+'" r="'+(known?1.75:1.1)+'" data-map-system="'+x.id+'" aria-label="'+(known?x.name:'Uncharted system')+'"><title>'+(known?x.name:'Uncharted system')+'</title></circle>';
+  if(known&&(s.known.length<45||x.id===s.system||x.owner==="you"))content+='<text x="'+(x.x+2.3)+'" y="'+(x.y-2.2)+'">'+x.name+'</text>';
+ }
+ content+='</g>';svg.innerHTML=content;
+}
+function attachGalaxyPan(){
+ const area=$(".galaxy-map");if(!area)return;
+ area.style.touchAction="none";
+ area.addEventListener("pointerdown",event=>{
+  mapDrag={x:event.clientX,y:event.clientY,panX:galaxyPanX,panY:galaxyPanY,moved:false};
+  if(area.setPointerCapture&&event.pointerId!==undefined)try{area.setPointerCapture(event.pointerId)}catch{}
+ });
+ area.addEventListener("pointermove",event=>{
+  if(!mapDrag)return;
+  const dx=event.clientX-mapDrag.x,dy=event.clientY-mapDrag.y;
+  if(Math.abs(dx)+Math.abs(dy)>5)mapDrag.moved=true;
+  if(!mapDrag.moved)return;
+  const width=area.clientWidth||300,height=area.clientHeight||300,span=240/galaxyZoom;
+  galaxyPanX=mapDrag.panX-dx*span/width;galaxyPanY=mapDrag.panY-dy*span/height;
+  renderGalaxyMap();
+ });
+ const finish=()=>{if(mapDrag&&mapDrag.moved){mapDragMoved=true;if(typeof setTimeout==="function")setTimeout(()=>{mapDragMoved=false},0)}mapDrag=null};
+ area.addEventListener("pointerup",finish);area.addEventListener("pointercancel",finish);
+}
+function load(){
+ attachGalaxyPan();
+ try{
+  const raw=localStorage.getItem(KEY);
+  if(raw)s=JSON.parse(raw);
+  else{s=fresh();const legacy=localStorage.getItem("voidreign-pocket-v1");if(legacy){try{const old=JSON.parse(legacy);["turn","credits","minerals","debt","science","rep","health","captain","nextShip","ships","log"].forEach(k=>{if(old[k]!==undefined)s[k]=old[k]});s.log.unshift("Migrated to the 200-system Pocket Empire galaxy; the older backup remains in local storage.")}catch{}}}
+  if(!Array.isArray(s.systems)||s.systems.length!==200){const old=s;s=fresh();["turn","credits","minerals","debt","science","rep","health","captain","ships","log"].forEach(k=>{if(old&&old[k]!==undefined)s[k]=old[k]})}
+  s.voidShards=Number.isFinite(s.voidShards)?Math.max(0,Math.floor(s.voidShards)):0;s.cosmetics=Array.isArray(s.cosmetics)?s.cosmetics:[];s.equippedCosmetic=s.equippedCosmetic||null;s.level=s.level||1;s.xp=s.xp||0;s.totalXp=s.totalXp||s.xp;s.perkPoints=s.perkPoints||0;s.perks=s.perks||{};s.skills=s.skills||{exploration:0,command:0,commerce:0,diplomacy:0,engineering:0};s.companions=s.companions||[];s.companions.forEach(c=>{c.rank=c.rank||1;c.xp=c.xp||0;c.ambition=c.ambition||{progress:0,complete:false};c.loyalty=c.loyalty===undefined?75:c.loyalty});s.treaties=s.treaties||[];s.relations=s.relations||{};speciesRoster.forEach(f=>{if(s.relations[f.id]===undefined)s.relations[f.id]=0});s.known=s.known||[s.system];s.visited=s.visited||[s.system];s.claimed=s.claimed||[s.system];s.flags=s.flags||{};s.flags.reducedGore=s.flags.reducedGore===undefined?true:s.flags.reducedGore;s.flags.contentWarningSeen=s.flags.contentWarningSeen===undefined?false:s.flags.contentWarningSeen;s.techs=s.techs||{};s.policy=s.policy||"balanced";s.systems.forEach(x=>{x.buildings=x.buildings||{mine:0,trade:0,lab:0,defense:0};if(x.stability===undefined)x.stability=70});s.ships.forEach(x=>{x.modules=x.modules||{weapon:0,armor:0,shields:0,sensors:0,cargo:0};if(x.shield===undefined)x.shield=0});s.log=s.log||[];
+  if(!s.systems.some(x=>x.id===s.system))s.system="sys-017";if(!s.known.includes(s.system))s.known.push(s.system);s.techs=s.techs||{};s.policy=s.policy||"balanced";s.systems.forEach(x=>{x.buildings=x.buildings||{mine:0,trade:0,lab:0,defense:0};if(x.stability===undefined)x.stability=70});
+ }catch{s=fresh()}
+ render();try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}
+}
+function validateImportSave(v){
+ if(!v||typeof v!=="object"||Array.isArray(v))return false;
+ if(!Number.isSafeInteger(v.turn)||v.turn<1||!Number.isInteger(v.seed)||v.seed<0||v.seed>4294967295)return false;
+ if(!Array.isArray(v.systems)||v.systems.length!==200||!Array.isArray(v.ships)||!Array.isArray(v.companions)||!Array.isArray(v.log))return false;
+ if(!Array.isArray(v.treaties)||!Array.isArray(v.contracts)||!Array.isArray(v.known)||!Array.isArray(v.visited)||!Array.isArray(v.claimed))return false;
+ if(!v.flags||typeof v.flags!=="object"||Array.isArray(v.flags)||!v.techs||typeof v.techs!=="object"||Array.isArray(v.techs)||!v.perks||typeof v.perks!=="object"||Array.isArray(v.perks)||!v.skills||typeof v.skills!=="object"||Array.isArray(v.skills)||!v.relations||typeof v.relations!=="object"||Array.isArray(v.relations))return false;
+ for(const key of ["credits","minerals","debt","science","voidShards","xp","totalXp"]){if(!Number.isFinite(v[key])||v[key]<0)return false}
+ if(!Number.isFinite(v.rep)||!Number.isFinite(v.health)||v.health<0||v.health>100||!Number.isSafeInteger(v.level)||v.level<1||v.level>1000||!Number.isSafeInteger(v.nextShip)||v.nextShip<1)return false;
+ const systemIds=new Set(),speciesIds=new Set(speciesRoster.map(f=>f.id));
+ for(let i=0;i<v.systems.length;i++){
+  const x=v.systems[i];
+  if(!x||typeof x!=="object"||x.id!=="sys-"+String(i+1).padStart(3,"0")||typeof x.name!=="string"||!x.name.trim()||!Array.isArray(x.lanes)||!Array.isArray(x.tags))return false;
+  if(!Number.isFinite(x.x)||!Number.isFinite(x.y)||!Number.isFinite(x.habit)||x.habit<0||x.habit>100||!Number.isFinite(x.population)||x.population<0||!Number.isFinite(x.wealth)||x.wealth<0||!Number.isFinite(x.minerals)||x.minerals<0)return false;
+  if(!(x.owner===null||x.owner==="you"||speciesIds.has(x.owner)))return false;
+  if(x.ownerSpeciesId!==null&&x.ownerSpeciesId!==undefined&&!speciesIds.has(x.ownerSpeciesId))return false;
+  if(x.stability!==undefined&&(!Number.isFinite(x.stability)||x.stability<0||x.stability>100))return false;
+  if(x.buildings!==undefined&&(!x.buildings||typeof x.buildings!=="object"||Array.isArray(x.buildings)))return false;
+  if(new Set(x.lanes).size!==x.lanes.length||x.lanes.some(id=>typeof id!=="string"||id===x.id||!/^sys-\d{3}$/.test(id)))return false;
+  systemIds.add(x.id);
+ }
+ if(systemIds.size!==200||!systemIds.has(v.system))return false;
+ for(const x of v.systems)for(const id of x.lanes){const target=v.systems[Number(id.slice(4))-1];if(!target||target.id!==id||!target.lanes.includes(x.id))return false}
+ for(const field of ["known","visited","claimed"])if(v[field].some(id=>!systemIds.has(id)))return false;
+ const shipIds=new Set();
+ for(const ship of v.ships){
+  if(!ship||typeof ship!=="object"||!Number.isSafeInteger(ship.id)||ship.id<1||shipIds.has(ship.id)||typeof ship.name!=="string"||!ship.name.trim()||typeof ship.type!=="string"||!Number.isFinite(ship.maxHp)||ship.maxHp<=0||!Number.isFinite(ship.hp)||ship.hp<0||ship.hp>ship.maxHp||!Number.isFinite(ship.attack)||ship.attack<0)return false;
+  shipIds.add(ship.id);
+  if(ship.modules!==undefined&&(!ship.modules||typeof ship.modules!=="object"||Array.isArray(ship.modules)))return false;
+ }
+ const companionIds=new Set();
+ for(const c of v.companions){
+  if(!c||typeof c!=="object"||!COMPANION_POOL.some(base=>base.id===c.id)||companionIds.has(c.id)||!Number.isInteger(c.rank)||c.rank<1||c.rank>5||!Number.isFinite(c.xp)||c.xp<0||!Number.isFinite(c.loyalty)||c.loyalty<0||c.loyalty>100)return false;
+  companionIds.add(c.id);
+  if(c.ambition!==undefined&&(!c.ambition||typeof c.ambition!=="object"||Array.isArray(c.ambition)||!Number.isFinite(c.ambition.progress)||c.ambition.progress<0||typeof c.ambition.complete!=="boolean"))return false;
+ }
+ if(v.log.length>60||v.log.some(line=>typeof line!=="string"))return false;
+ if(!Array.isArray(v.cosmetics)||v.cosmetics.some(id=>typeof id!=="string"||!COSMETIC_ITEMS.some(item=>item.id===id)))return false;
+ if(v.equippedCosmetic!==null&&v.equippedCosmetic!==undefined&&!v.cosmetics.includes(v.equippedCosmetic))return false;
+ // A valid game export contains plain narrative, never HTML. Refuse markup-like data
+ // instead of letting an import turn saved names/descriptions into executable UI markup.
+ const scan=[v],seen=new Set();
+ while(scan.length){
+  const item=scan.pop();
+  if(typeof item==="string"){if(/[<>]/.test(item))return false;continue}
+  if(!item||typeof item!=="object")continue;
+  if(seen.has(item))return false;seen.add(item);
+  for(const value of Array.isArray(item)?item:Object.values(item))scan.push(value);
+ }
+ return true;
+}
+function save(){localStorage.setItem(KEY,JSON.stringify(s));say('Campaign saved locally.');render()}
+function say(m){s.log.unshift('Turn '+s.turn+': '+m);s.log=s.log.slice(0,60)}
+function sys(){return s.systems.find(x=>x.id===s.system)}
+function money(n){return Math.round(n).toLocaleString()}
+function render(){ updateMilestones();updateStoryArc();updateMilestones();renderStoryArc();renderShop();$('#turnline').textContent='Turn '+s.turn+' · '+sys().name+' · Local campaign';const warning=$('#content-warning');if(warning)warning.style.display=s.flags.contentWarningSeen?'none':'block';const goreSetting=$('#gore-setting');if(goreSetting)goreSetting.textContent=(s.flags.reducedGore===undefined||s.flags.reducedGore)?'Reduced graphic descriptions: ON':'Full mature descriptions: ON';$('#resources').innerHTML=[['Credits',s.credits],['Strategic Materials',s.minerals],['Research Data',s.science],['Debt',s.debt],['Renown',s.rep]].map(([n,v])=>'<div class="resource"><b>'+money(v)+'</b><small>'+n+'</small></div>').join('');
+$('#systemcount').textContent=s.known.length+' / '+s.systems.length+' charted';$('#galaxy-total').textContent=s.systems.length;$('#galaxy-known').textContent=s.known.length;$('#galaxy-owned').textContent=s.systems.filter(x=>x.owner==='you').length;renderGalaxyMap();
+const query=($('#galaxySearch')&&$('#galaxySearch').value||'').toLowerCase();$('#systems').innerHTML=s.systems.filter(x=>s.known.includes(x.id)&&(!query||(x.name+' '+x.kind+' '+factionName(x.owner)).toLowerCase().includes(query))).map(x=>'<button class="system '+(x.id===s.system?'selected':'')+'" data-system="'+x.id+'"><b>'+x.name+'</b><small>'+x.kind+(x.owner?' · '+(x.owner==='you'?'Your system':factionName(x.owner)):' · Unclaimed')+'</small></button>').join('')||'<p class="muted">No charted systems match this search.</p>';
+const a=sys(),planetArt=renderPlanetArt(a);$('#systemdetail').innerHTML='<div class="row"><h2>'+escapeHtml(a.name)+'</h2><span class="pill">'+escapeHtml(a.kind)+'</span></div>'+planetArt+'<p class="muted">'+escapeHtml(a.desc)+'</p><div class="row"><span>World: '+a.planet+'</span><span>Habitability '+a.habit+'%</span></div><div class="row"><span>Trade index '+a.wealth+'</span><span>Minerals '+a.minerals+'</span></div><div class="actions"><button data-action="trade">Trade</button><button data-action="claim">Claim world</button><button data-action="explore">Survey</button></div><p class="muted">Hyperlanes · Select a connected destination:</p><div class="actions">'+a.lanes.map(id=>'<button data-travel="'+id+'">'+s.systems.find(z=>z.id===id).name+' →</button>').join('')+'</div>'+ (s.techs.orbital_annihilator&&a.owner&&a.owner!=="you"?'<div class="card"><h3>Oblivion Engine</h3><p class="warntext">Catastrophic orbital strike. Cost: 180 credits + 80 minerals. A second tap is required. The target world and diplomatic standing will be devastated.</p><button data-action="cataclysm">'+(s.flags.strikePending===a.id?'CONFIRM ORBITAL STERILISATION':'Launch annihilation strike')+'</button></div>':'') + '<p class="muted">Star class '+(a.starClass||'G')+' · Danger '+(a.danger||0)+'/100 · Richness '+(a.richness||0)+'/100 · '+(a.tags||[]).join(', ')+'</p>';
+$('#captainname').textContent=s.captain;$('#rank').textContent=captainRank();$('#captainbio').textContent='Health '+s.health+' · Level '+s.level+' · Reputation '+s.rep+' · Total XP '+s.totalXp+'. Every level grants a perk point; build a distinct captain.';$('#levelline').textContent='Level '+s.level+' · '+captainRank();$('#xpline').textContent=s.xp+' / '+xpRequired(s.level)+' XP';$('#xpbar').style.width=Math.min(100,100*s.xp/xpRequired(s.level))+'%';$('#skillline').textContent='Skills · Scouting '+(s.skills.exploration||0)+' · Command '+(s.skills.command||0)+' · Commerce '+(s.skills.commerce||0)+' · Diplomacy '+(s.skills.diplomacy||0)+' · Engineering '+(s.skills.engineering||0)+'.';$('#captainstats').innerHTML=[['Perk points',s.perkPoints],['Fleet attack',s.ships.reduce((n,x)=>n+x.attack,0)+2*perkRank('vanguard')+companionAttack()],['Retinue',s.companions.length+'/'+companionLimit()]].map(x=>'<div class="stat"><b>'+x[1]+'</b><small>'+x[0].toUpperCase()+'</small></div>').join('');renderPerks();
+$('#contracts').innerHTML=[['Salvage run','Survey '+s.systems.find(x=>x.id==='sys-012').name+' for mineral data.',s.visited.includes('sys-012'),25],['Diplomatic courier','Reach '+s.systems.find(x=>x.id==='sys-018').name+' and earn trust.',s.visited.includes('sys-018'),20],['Frontier survey','Survey '+s.systems.find(x=>x.id==='sys-024').name+'.',s.visited.includes('sys-024'),30]].map(([n,d,done,reward])=>'<div class="row"><div><b>'+n+'</b><div class="muted">'+d+'</div></div><button data-contract="'+n+'" '+(!done||s.flags['contract:'+n]?'disabled':'')+'>'+ (s.flags['contract:'+n]?'Complete':done?'Claim '+reward:'In progress')+'</button></div>').join('');
+renderFleet();renderCompanions();renderEmpire();
+$('#ledgerlines').innerHTML=s.log.slice(0,16).map(x=>'<div class="log">'+escapeHtml(x)+'</div>').join('');const debtLine=$('#debtline'),repayButton=$('#repay-debt');if(debtLine)debtLine.innerHTML='<div class="stat"><b>'+money(s.debt)+'</b><small>PRINCIPAL</small></div><div class="stat"><b>'+money(s.debt>0?Math.max(1,Math.ceil(s.debt*.025)):0)+'</b><small>NEXT INTEREST</small></div><div class="stat"><b>'+money(s.credits)+'</b><small>AVAILABLE CREDITS</small></div>';if(repayButton)repayButton.disabled=s.debt<=0||s.credits<=0;try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
+function escapeHtml(x){return x.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function travel(id){const cur=sys();if(!cur.lanes.includes(id)){say('Navigation denied: no direct lane. Travel through a connected system first.');return}s.system=id;if(!s.known.includes(id))s.known.push(id);const next=s.systems.find(x=>x.id===id);next.lanes.forEach(n=>{if(!s.known.includes(n))s.known.push(n)});if(!s.visited.includes(id)){s.visited.push(id);gainXp(5+(s.ships.reduce((n,x)=>n+(x.modules?.sensors||0),0)*2),'exploration');s.science+=2+s.ships.reduce((n,x)=>n+(x.modules?.sensors||0)*2,0);s.credits+=5;say('Surveyed '+next.name+'. New data sold for 5 credits.')}else say('Arrived at '+sys().name+'.');render()}
+function act(a){const here=sys();switch(a){
+case'ack-warning':s.flags.contentWarningSeen=true;say('Content advisory acknowledged. Change the description setting in Ledger any time.');break;
+case'toggle-gore':s.flags.reducedGore=!(s.flags.reducedGore===undefined?true:s.flags.reducedGore);say(s.flags.reducedGore?'Reduced graphic descriptions enabled.':'Full mature descriptions enabled.');break;
+case'cataclysm':if(!s.techs.orbital_annihilator){say('The Oblivion Engine technology has not been researched.');break}else if(here.owner==='you'){say('The engine cannot target your own system.');break}else if(s.flags.strikePending!==here.id){s.flags.strikePending=here.id;say('WARNING: another strike command will annihilate the population of '+here.name+' and render it uninhabitable. Every civilization will condemn this act.');break}else if(s.credits<180||s.minerals<80){say('The strike requires 180 credits and 80 minerals.');s.flags.strikePending=null;break}else{const victim=here.owner,victimName=factionName(victim);s.credits-=180;s.minerals-=80;here.population=0;here.owner=null;here.ownerSpeciesId=null;here.kind='Cataclysmic Ruin';here.planet='Sterilised world';here.habit=0;here.stability=0;here.wealth=0;here.minerals=Math.max(1,Math.floor(here.minerals/2));here.buildings={mine:0,trade:0,lab:0,defense:0};here.tags=[...(here.tags||[]),'orbital devastation'];here.desc='The atmosphere and biosphere were shattered by an Oblivion Engine strike. A silent ruin remains where a living world once stood.';s.flags.strikePending=null;s.flags.atrocityCount=(s.flags.atrocityCount||0)+1;s.rep-=35;for(const f of speciesRoster)s.relations[f.id]=Math.max(-100,(s.relations[f.id]||0)-30);if(victim)s.relations[victim]=-100;s.treaties=[];say((s.flags.reducedGore===undefined||s.flags.reducedGore)?'The Oblivion Engine erased the population of '+here.name+'. The biosphere is uninhabitable; the interstellar tribunal records genocide. '+victimName+' has lost the system.':'Orbital fire consumed the inhabited districts of '+here.name+'. The biosphere ruptured; recovery teams found burned shelters and mangled remains. The population was annihilated, and the tribunal records genocide.');say('Diplomatic blowback: treaties collapsed, survivor factions moved toward a coalition, and your reputation fell by 35.');gainXp(20,'command')}break;
+case'travel':say('Select a hyperlane button in the system report to travel.');break;
+case'repay-debt':{if(s.debt<=0){say('Your principal is fully repaid. No creditor balance remains.')}else if(s.credits<=0){say('No credits available for a principal payment. Earn income or trade first.')}else{const payment=Math.min(s.debt,Math.min(25,s.credits));s.credits-=payment;s.debt=Math.max(0,s.debt-payment);say('Principal repayment: '+payment+' credits. Remaining debt: '+s.debt+'.');if(s.debt===0){s.rep=Math.min(100,s.rep+5);say('DEBT CLEARED. Your reputation improved by five; future income is no longer exposed to creditor interest.')}}break}
+case'trade':{const gain=Math.max(4,Math.round(here.wealth*5*(1+perkRank('merchant')*.12+(companionSkillRank('commerce')*.04))));const capacity=s.ships.reduce((n,x)=>n+x.cargo,0),units=Math.min(s.minerals,Math.max(1,Math.min(6,Math.floor(capacity/10))));if(s.minerals>0){s.minerals-=units;s.credits+=gain*units;gainXp(3,'commerce');say('Sold '+units+' mineral unit'+(units===1?'':'s')+' for '+(gain*units)+' credits at '+here.name+'.')}else if(s.credits>=20){s.credits-=20;s.minerals+=Math.max(1,Math.floor(here.minerals/2));gainXp(2,'commerce');say('Bought minerals at the local market.')}else say('Not enough resources to trade.');break}
+case'claim':if(here.owner==='you'){say('This system is already under your protection.')}else if(here.owner){say('A recognized government controls this system. A claim would be an act of war.')}else if(s.credits>=35&&here.habit>=40){s.credits-=35;here.owner='you';here.ownerSpeciesId=null;here.kind='Outpost';here.population=5;here.stability=70;here.buildings=here.buildings||{mine:0,trade:0,lab:0,defense:0};if(!s.claimed.includes(here.id))s.claimed.push(here.id);const borderFactions=[...new Set(here.lanes.map(id=>s.systems.find(x=>x.id===id)?.owner).filter(id=>id&&id!=='you'))];borderFactions.forEach(id=>{s.relations[id]=Math.max(-100,(s.relations[id]||0)-4)});say('Established a chartered outpost in '+here.name+'.'+(borderFactions.length?' Rival powers noted the expansion at their border.':'') );gainXp(8,'engineering');}else say('Claim requires 35 credits and habitability of at least 40%.');break;
+case'explore':if(!s.visited.includes(here.id)){s.visited.push(here.id);gainXp(8,'exploration');s.science+=4;say('Mapped a hidden feature in '+here.name+'.')}else if(!s.flags['anomaly:'+here.id]){s.flags['anomaly:'+here.id]=true;const roll=(s.turn+s.xp)%3;if(roll===0){s.credits+=18;say('Recovered an abandoned cargo pod: +18 credits.')}else if(roll===1){s.science+=6;say('Recovered ancient data: +6 science.')}else{s.health=Math.max(15,s.health-8);say((s.flags.reducedGore===undefined||s.flags.reducedGore)?'An expedition accident costs 8 health.':'A ruptured exploration suit leaves the compartment blood-smeared; the crew seals it and records eight points of damage.')}gainXp(3,'exploration');}else say('No new leads here.');break;
+case'scheme':if(s.credits>=10){s.credits-=10;const ok=(s.turn+s.rep+s.xp)%3!==0;if(ok){s.credits+=Math.round(26*(1+perkRank('merchant')*.1));s.rep-=1;say('A discreet deal pays credits; reputation takes a hit.')}else{s.health=Math.max(1,s.health-10);s.rep-=2;say('The deal was a sting. Lost 10 health and reputation.')}gainXp(4,'commerce');}else say('You need 10 credits to fund a scheme.');break;
+case'build-scout':if(s.credits>=35){s.credits-=35;s.ships.push({id:s.nextShip++,name:'Peregrine '+s.nextShip,type:'Scout',hp:14+2*perkRank('engineer')+(s.techs.reinforced_hulls?8:0),maxHp:14+2*perkRank('engineer')+(s.techs.reinforced_hulls?8:0),attack:3+(s.techs.naval_gunnery?2:0),cargo:5});gainXp(3,'engineering');say('A scout has joined your fleet.')}else say('Not enough credits.');break;
+case'build-frigate':if(s.credits>=70&&s.minerals>=20){s.credits-=70;s.minerals-=20;s.ships.push({id:s.nextShip++,name:'Bulwark '+s.nextShip,type:'Frigate',hp:26+2*perkRank('engineer')+(s.techs.reinforced_hulls?8:0),maxHp:26+2*perkRank('engineer')+(s.techs.reinforced_hulls?8:0),attack:8+(s.techs.naval_gunnery?2:0),cargo:3});gainXp(5,'engineering');say('A frigate has joined your fleet.')}else say('Requires 70 credits and 20 minerals.');break;
+case'repair':{const missing=s.ships.reduce((n,x)=>n+x.maxHp-x.hp,0),cost=Math.ceil(missing/2*repairMultiplier());if(!missing)say('All hulls are at full strength.');else if(s.credits>=cost){s.credits-=cost;s.ships.forEach(x=>x.hp=x.maxHp);say('Fleet repaired for '+cost+' credits.')}else say('Repairs cost '+cost+' credits.');break}
+case'fight':startBattle();break;
+case'save':save();return;
+case'export':{const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='voidreign-pocket-save.json';link.click();URL.revokeObjectURL(url);say('Exported campaign backup.');break}
+case'import':{const input=document.createElement('input');input.type='file';input.accept='application/json';input.onchange=async()=>{try{if(!input.files||!input.files[0])throw Error('No file selected');const file=input.files[0];if(file.size>5000000)throw Error('Save exceeds the 5 MB safety limit');const raw=await file.text();if(raw.length>5000000)throw Error('Save exceeds the 5 MB safety limit');const v=JSON.parse(raw);if(!validateImportSave(v))throw Error('Invalid or unsafe save');s=v;save();say('Campaign backup imported and validated.');render()}catch{say('Import failed: invalid, unsafe or oversized backup. Your current campaign was kept.');render()}};input.click();break}
+case'reset':if(s.flags.resetPending){s=fresh();save();say('New campaign started. Export your old campaign first next time.')}else{s.flags.resetPending=true;say('Tap New campaign again to confirm. Export your current save first if you want to keep it.')}render();return;
+}}
+function resolveAIEmpires(){
+ const expansions=[];
+ if(s.turn%2===0){
+  const factionIndexes=[s.turn%speciesRoster.length,(s.turn+7)%speciesRoster.length];
+  for(const idx of factionIndexes){
+   const f=speciesRoster[idx],owned=s.systems.filter(x=>x.owner===f.id);
+   if(!owned.length||owned.length>=28)continue;
+   const candidateMap=new Map();
+   for(const base of owned)for(const id of base.lanes){const target=s.systems.find(x=>x.id===id);if(target&&target.owner===null&&target.habit>=20)candidateMap.set(target.id,target)}
+   const candidates=Array.from(candidateMap.values());if(!candidates.length)continue;
+   const style=(f.style||"").toLowerCase();
+   candidates.sort((a,b)=>{
+    const score=x=>x.habit*.6+(x.wealth||0)*((style.includes("diplom")||style.includes("industrial")||style.includes("exchange"))?8:4)+(x.minerals||0)*(style.includes("industrial")?8:3)+(x.danger||0)*((style.includes("militar")||style.includes("extermin")||style.includes("raider"))?.3:-.2)+(x.tags.includes("ancient ruins")&&style.includes("psionic")?10:0);
+    return score(b)-score(a);
+   });
+   const target=candidates[0];target.owner=f.id;target.ownerSpeciesId=f.id;target.kind="Colony";target.population=Math.max(target.population||0,style.includes("swarm")?18:10);target.stability=68;target.desc=f.name+" has expanded into this system. Its local administration follows the "+f.style+" doctrine.";
+   expansions.push(f.name+" established a colony in "+target.name+".");
+  }
+ }
+ if(s.turn%5===0){
+  const hostile=speciesRoster.filter(f=>(s.relations[f.id]||0)<=-60&&s.systems.some(x=>x.owner===f.id&&x.lanes.some(id=>s.systems.find(y=>y.id===id)?.owner==="you")));
+  if(hostile.length&&s.ships.length){
+   const f=hostile[(s.turn/5|0)%hostile.length],ship=s.ships.reduce((a,b)=>a.hp<=b.hp?a:b),damage=3+((f.style||"").toLowerCase().includes("militar")?3:0);
+   ship.hp=Math.max(1,ship.hp-damage);
+   say(f.name+" launched a retaliatory strike on your fleet. "+ship.name+" lost "+damage+" hull; open wars carry real maintenance costs.");
+  }
+ }
+ if(expansions.length)say("Frontier intelligence: "+expansions.join(" "));
+}
+function resolveColonyGrowth(colonies){
+ for(const x of colonies||[]){
+  x.population=Math.max(0,Number(x.population)||0);
+  x.stability=Math.max(0,Math.min(100,Number.isFinite(x.stability)?x.stability:70));
+  x.buildings=x.buildings||{mine:0,trade:0,lab:0,defense:0};
+  const habit=Math.max(0,Math.min(100,Number(x.habit)||0));
+  const populationPressure=Math.max(0,Math.floor((x.population-12)/12));
+  const industrialStrain=Math.max(0,(x.buildings.mine||0)-1);
+  const hazardStrain=(x.danger||0)>=75?1:0;
+  const habitSupport=habit>=80?2:habit>=55?1:0;
+  const infrastructureSupport=(x.buildings.trade>0?1:0)+(x.buildings.defense>0?1:0);
+  x.stability=Math.max(0,Math.min(100,x.stability+habitSupport+infrastructureSupport-populationPressure-industrialStrain-hazardStrain));
+  if(habit<20&&x.population>0&&s.turn%2===1){
+   x.population=Math.max(0,x.population-1);
+   x.stability=Math.max(0,x.stability-2);
+   if(x.population%5===0)say("Environmental stress on "+x.name+" is reducing the settlement.");
+  }else if(habit>=40&&x.stability>=50&&s.turn%2===1){
+   const growth=habit>=80?2:1;
+   x.population=Math.min(999,x.population+growth);
+   if(x.population>30&&x.stability>60)x.stability=Math.max(0,x.stability-1);
+  }
+  if(x.stability<30&&x.population>0&&s.turn%3===0){
+   x.population=Math.max(0,x.population-1);
+   x.stability=Math.max(0,x.stability-2);
+   say("Unrest on "+x.name+" has cost one population. Improve habitability or build trade/defence support.");
+  }
+ }
+}
+function endTurn(){s.turn++;resolveAIEmpires();const owned=s.systems.filter(x=>x.owner==='you');resolveColonyGrowth(owned);const policy=s.policy||'balanced';const income=owned.reduce((n,x)=>n+x.wealth*2+(x.buildings?.trade||0)*4,0);s.credits+=Math.round((income+owned.reduce((n,x)=>n+Math.min(8,Math.floor((x.population||0)/10)),0))*(1+perkRank('industrialist')*.12)*(policy==='trade'?1.25:1));s.minerals+=Math.round(owned.reduce((n,x)=>n+Math.max(1,Math.floor(x.minerals/3))+(x.buildings?.mine||0)*2+perkRank('governor')+(s.techs.industrial_automation?1:0),0)*(policy==='industrial'?1.25:1));s.science+=Math.round(owned.reduce((n,x)=>n+1+(x.buildings?.lab||0)*3,0)*(policy==='research'?1.3:1));const interest=s.debt>0?Math.max(1,Math.ceil(s.debt*.025)):0;if(interest>0){if(s.credits>=interest){s.credits-=interest;say("Creditor interest: "+interest+" credits charged on outstanding debt of "+s.debt+". Repay principal from the Ledger.");}else{s.rep=Math.max(-100,s.rep-1);say("Missed creditor interest of "+interest+" credits. Reputation fell by one; lenders are tightening terms.");}}if(s.health<100&&s.turn%3===0)s.health=Math.min(100,s.health+2+3*perkRank('fieldmedic'));s.companions.forEach(c=>{const wage=Math.max(1,c.wage-(s.techs.logistics_network?1:0));if(s.credits>=wage){s.credits-=wage;c.loyalty=Math.min(100,c.loyalty+1);addCompanionXp(c,2,"routine service")}else{c.loyalty=Math.max(0,c.loyalty-4);if(c.loyalty===0)say(c.name+' left after unpaid wages.')}});s.companions=s.companions.filter(c=>c.loyalty>0);
+if(s.turn%4===0&&(s.relations.varkesh||0)<0){s.credits=Math.max(0,s.credits-8);say('Varkesh patrols impose an 8-credit inspection levy. Improve relations or avoid their lanes.')}if((s.flags.atrocityCount||0)>0&&s.turn%3===0){const sanction=8*s.flags.atrocityCount;s.credits=Math.max(0,s.credits-sanction);say('Coalition sanctions drain '+sanction+' credits following the orbital genocide. Resistance and reprisals continue across the frontier.')}say('Turn resolved: production, debt service, companion wages and faction reactions updated.');render()}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(!b)return;all('.tab').forEach(x=>x.classList.toggle('active',x===b));['map','captain','fleet','companions','empire','shop','ledger'].forEach(id=>$('#'+id).classList.toggle('hidden',id!==b.dataset.tab))});
+$('#galaxySearch').addEventListener('input',()=>render());document.addEventListener('click',e=>{const zoom=e.target.closest('[data-zoom]');if(zoom){galaxyZoom=zoom.dataset.zoom==='in'?Math.min(2.6,galaxyZoom*1.25):zoom.dataset.zoom==='out'?Math.max(.65,galaxyZoom/1.25):1;if(zoom.dataset.zoom==='reset'){galaxyPanX=0;galaxyPanY=0}renderGalaxyMap();return}const mapNode=e.target.closest('[data-map-system]');if(mapNode){if(mapDragMoved){mapDragMoved=false;return}const target=mapNode.dataset.mapSystem;if(!s.known.includes(target)){say('Uncharted system. Reach it through the revealed hyperlane network first.');render();return}if(target!==s.system&&sys().lanes.includes(target)){travel(target)}else if(target!==s.system){say('That charted system is not directly connected. Follow a neighbouring hyperlane first.');render()}return}const tb=e.target.closest('[data-travel]');if(tb){travel(tb.dataset.travel);return}const pb=e.target.closest('[data-perk]');if(pb){choosePerk(pb.dataset.perk);return}const rb=e.target.closest('[data-recruit]');if(rb){recruitCompanion(rb.dataset.recruit);return}const db=e.target.closest('[data-dismiss]');if(db){dismissCompanion(db.dataset.dismiss);return}const dip=e.target.closest('[data-diplomacy]');if(dip){startDiplomacy(dip.dataset.diplomacy);return}const sb=e.target.closest('[data-system]');if(sb){const target=sb.dataset.system;if(target===s.system){render();return}if(sys().lanes.includes(target)){travel(target)}else{say('That system is not connected to your current position. Travel through a neighbouring system first.');render()}return}
+const cosmetic=e.target.closest('[data-cosmetic]');if(cosmetic){purchaseCosmetic(cosmetic.dataset.cosmetic);return}const battleMove=e.target.closest('[data-battle-move]');if(battleMove){resolveBattleMove(battleMove.dataset.battleMove);return}const refit=e.target.closest('[data-refit-ship]');if(refit){refitShip(refit.dataset.refitShip,refit.dataset.module);return}const building=e.target.closest('[data-build-building]');if(building){buildBuilding(building.dataset.buildBuilding,building.dataset.buildingKind);return}const research=e.target.closest('[data-research]');if(research){researchTechnology(research.dataset.research);return}const policy=e.target.closest('[data-policy]');if(policy){setPolicy(policy.dataset.policy);return}const ab=e.target.closest('[data-action]');if(ab){act(ab.dataset.action);render();return}
+const cb=e.target.closest('[data-contract]');if(cb){const name=cb.dataset.contract;const dest=name==='Salvage run'?'sys-012':name==='Diplomatic courier'?'sys-018':'sys-024';if(!s.flags['contract:'+name]&&s.visited.includes(dest)){const reward=name==='Salvage run'?25:name==='Diplomatic courier'?20:30;s.credits+=reward;gainXp(8,'command');s.flags['contract:'+name]=true;say('Contract completed: '+name+'. Reward '+reward+' credits.')}render()}});
+$('#endturn').addEventListener('click',endTurn);$('#quicksave').addEventListener('click',save);document.addEventListener('click',e=>{const jump=e.target.closest('[data-tab-jump]');if(!jump)return;const tab=jump.dataset.tabJump;if(!['map','captain','fleet','companions','empire','shop','ledger'].includes(tab))return;all('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));['map','captain','fleet','companions','empire','shop','ledger'].forEach(id=>$('#'+id).classList.toggle('hidden',id!==tab));});
+window.addEventListener('beforeunload',()=>{try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}});
+if(typeof navigator!=="undefined"&&navigator.serviceWorker&&typeof location!=="undefined"&&location.protocol!=="file:"){navigator.serviceWorker.register("./sw.js").catch(()=>{})}
+load();
+})();
+</script></body></html>

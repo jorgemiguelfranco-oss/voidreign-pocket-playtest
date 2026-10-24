@@ -1,0 +1,25 @@
+name: Pocket Empire regression and offline browser tests
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phone/**"
+      - ".github/workflows/phone-smoke.yml"
+      - ".github/workflows/deploy-pocket-empire.yml"
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned browser automation package
+        run: npm install --no-save --no-package-lock playwright@1.56.1
+      - name: Run gameplay and asset regression suite
+        run: node phone/smoke-test.cjs
+      - name: Run Chromium mobile/offline/backup-import regression suite
+        run: node phone/browser-test.cjs
