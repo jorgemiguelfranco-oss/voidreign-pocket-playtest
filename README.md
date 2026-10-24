@@ -1,38 +1,40 @@
 # VOIDREIGN: Pocket Empire — Android play-test
 
-A mobile-first, offline-first science-fiction strategy prototype: begin as a debtor-captain with one ship, recruit specialists, explore a 200-system galaxy, build an empire and decide whether to rule through diplomacy or force.
+**Play now:** https://jorgemiguelfranco-oss.github.io/voidreign-pocket-playtest/
 
-**Status: public play-test build, not a finished commercial release.** There is no Google Play billing, multiplayer backend, ad network or real-money currency purchase. The Void Shard exchange is prototype-only and does not grant combat bonuses.
+A mobile-first, offline-first science-fiction strategy prototype. Start as a debtor-captain with one ship, recruit specialists, explore a 200-system galaxy and build an interstellar empire through trade, diplomacy, research and warfare.
 
-## Play on Android
+**Status: public play-test build, not a finished commercial release.** There is no Google Play billing, multiplayer backend, ad network or real-money currency purchase. The Void Shard exchange is a local prototype economy and does not grant combat bonuses.
 
-1. Open the play-test site in **Chrome for Android** while online.
-2. Choose Chrome's menu, then **Install app** or **Add to Home screen**.
-3. Launch VOIDREIGN from the new home-screen icon and let the first load finish.
-4. Keep the phone online for this first load so the app shell, vector art, manifest and service worker can be cached.
-5. Once loaded, disconnect from Wi-Fi/mobile data and relaunch the app to test offline play. Campaign progress is stored locally in that browser profile; export a backup from **Ledger** before clearing browser data or uninstalling.
+## Install on Android and play offline
 
-A later build may not replace the previous installed copy until Chrome refreshes the service worker. Reopen the site online to receive the latest test build.
+1. Open the play-test link above in **Chrome for Android** while online.
+2. Open Chrome's menu and choose **Install app** or **Add to Home screen**.
+3. Launch VOIDREIGN from the home-screen icon and let the first load finish.
+4. Stay online during the first load so the game shell, artwork, manifest and service worker are cached.
+5. Relaunch from the icon with Wi-Fi and mobile data disabled to test offline play.
 
-## What's in this build
+Campaign progress is stored locally in that browser profile. In Ledger, export a backup before clearing browser data or uninstalling. Updates arrive when you open the site online and Chrome refreshes the service worker.
 
-- 200 seeded, connected systems and 16 fictional civilizations, with a pan/zoom star chart and direct-hyperlane travel.
-- Captain levels and perks, companion progression and personal ambitions, campaign chapters, contracts and milestone rewards.
-- Ship construction, modules/refits, tactical command-round combat, enemy retaliation, disabled hulls, retreat and salvage.
-- Claimable systems, colonies, population and stability pressure, construction, policy, research, diplomacy/treaties and rival expansion.
-- Creditor interest with manual principal repayment; the opening loan is an actual survival pressure.
+## Playable systems
+
+- 200 seeded, connected star systems and 16 fictional civilizations, with pan/zoom/search chart and direct-hyperlane travel.
+- Sixteen bespoke hand-drawn SVG faction crests, star/planet illustrations, angular vessel silhouettes and an original command-deck scene.
+- Captain levels/perk trees, ranked companions with individual ambitions and rewards, contracts, milestones and a five-chapter Silent Crown campaign.
+- Ship construction and refits, tactical command-round combat, enemy retaliation, disabled hulls, retreat and salvage.
+- Claimable systems, colony construction, population growth and stability pressure, economic policies, research technologies, treaties and rival expansion.
+- Creditor interest and manual principal repayment; the starting loan creates a real survival choice.
 - Consequential fictional orbital devastation, content advisory and reduced-graphic-description setting.
-- Original vector command-deck, planet/system and ship illustrations, 192px and 512px Android icons, local saves and validated JSON backup import.
-- No forced ads, no tracking and no network dependency during gameplay. First install/update does need an internet connection.
+- Local saves, safe JSON backup import/export, 192px/512px Android app icons and offline service-worker caching.
 
-## Validation
+No forced ads, tracking, account or online gameplay service is needed. Internet is required for the first load and updates.
 
-Every push to main runs the automated gameplay suite and a real Chromium mobile/offline suite. The browser checks use 320, 360, 390 and 412 CSS-pixel viewports, exercise tactical combat, companion recruitment, save/reload, hostile and valid backup imports, service-worker registration and offline reload.
+## Validation and release state
 
-## Current limitations
+The repository runs gameplay/security tests plus real Chromium tests, including all 16 faction crests, 320/360/390/412 CSS-pixel layouts, combat and companion flows, safe and malicious save imports, install manifest/icons, service-worker registration and offline reload. The deployment workflow also re-tests the live HTTPS site.
 
-This is an actively developed play-test slice. It still needs physical-device testing on multiple Android phones, deeper late-game AI/economy balance, more event chains and species-specific content, and full commercial-release work. A passing automated suite is not a substitute for testing on your device.
+This is an actively developed vertical slice, not a finished commercial game. Physical Android handset testing, further balancing, deeper late-game AI and event chains, production-grade final art/animation, age-rating review and any signed commercial Android package remain outstanding.
 
 ## Feedback
 
-When reporting an issue, include the device model, Android/Chrome version, exact steps, whether you were online/offline and the turn/system where it happened. Export a save if the issue affects your campaign, but remove any personal notes before sharing it.
+When reporting an issue, include phone model, Android/Chrome version, whether you were online or offline, and steps to reproduce. Export your save if it affects the campaign, and remove any personal notes before sharing it.

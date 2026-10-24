@@ -1,26 +1,28 @@
 # VOIDREIGN: Pocket Empire
 
-Touch-first, offline-first, character-led science-fiction strategy.
+Touch-first, offline-first, character-led science-fiction strategy. Public play-test site: https://jorgemiguelfranco-oss.github.io/voidreign-pocket-playtest/
 
-## Play locally
+## Android install and offline play
 
-Open index.html for a quick offline session. Home-screen installation and offline caching require the app to be served over HTTPS; for Android, use the published project site and Chrome's **Install app / Add to Home screen** option. The first load/update must be online so the service worker can cache the game and artwork.
+Open the site in Chrome for Android while online, choose **Install app** or **Add to Home screen**, then allow the first launch to complete. The service worker caches the HTML, manifest, SVG artwork and 192px/512px install icons. You can then relaunch the installed app offline. Save files are local to that browser profile; export a backup from Ledger before clearing browser data.
 
 ## Game systems
 
-- 200 connected star systems with deterministic seeds and 16 distinct fictional civilizations.
-- Captain XP and perk trees, ranked companions with individual ambitions and rewards, milestones, contracts and a five-chapter Silent Crown story.
-- Ship construction and refits, original vector ship silhouettes, command-round tactical combat, retaliation, hull disablement, retreat and salvage.
-- Colonization, population and stability pressure, buildings, economy/policies, seven technologies, treaties/diplomacy and rival expansion.
-- Creditor interest and player-controlled loan repayment; colony stability reacts to habitability, population, industrial strain and hazards.
-- Research-gated orbital devastation with diplomatic, reputation and ongoing sanction consequences; mature-content advisory and reduced descriptions.
-- Original command-deck and system/planet vectors, custom 192px/512px PNG Android icons, local save/autosave, JSON export/import validation and offline service-worker cache.
-- No forced ads or tracking. Void Shards and cosmetics are a local prototype economy only; Google Play Billing is not implemented.
+- 200 connected star systems with seeded generation, 16 fictional civilizations and direct-hyperlane travel.
+- Sixteen hand-drawn faction emblems, custom vector command-deck art, stylized planet/system art and ship-class silhouettes.
+- Captain XP/perk trees, ranked companions and personal ambitions, contracts, rewards and a five-chapter campaign.
+- Ship construction/refits, tactical command-round battles, focus-fire/brace/boarding/retreat, enemy retaliation, disabled hulls and salvage.
+- Claimable systems, population growth, stability pressure, construction, policies, seven technologies, treaties and rival expansion.
+- Creditor interest with manual debt repayment; the loan has a meaningful economic cost.
+- Research-gated orbital devastation with diplomatic consequences, content advisory and reduced graphic descriptions.
+- Local save/autosave, JSON export/import with validation, cosmetic prototype currency, install icons and service-worker offline cache.
 
-## QA
+There are no forced ads, analytics or online gameplay calls. Void Shards are not sold for real money and the Google Play Billing integration is not implemented.
 
-The smoke-test file exercises seeded topology, story completion and rewards, player/economy actions, ship refits/combat, debt/colony pressures, save-import security and PWA assets. The browser-test file uses Chromium at 320/360/390/412 CSS-pixel widths and tests the actual mobile UI, saves, safe imports, service worker and offline reload.
+## Automated QA
+
+The gameplay suite checks galaxy generation, story rewards, economy, ships/combat, save import security, PWA assets and the 16 faction crests. The Chromium suite tests 320/360/390/412-pixel phone layouts, tactical combat, recruitment, save/reload, safe/hostile backup import, install manifest and icons, service-worker registration and offline reload. A deployment job runs the Chromium suite against the live HTTPS site.
 
 ## Scope
 
-This is an actively developed playable vertical slice, not a finished commercial game. Physical Android device testing, late-game balance, deeper AI/event systems, ratings review and commercial Android packaging remain outstanding.
+This is a playable vertical slice, not a finished commercial game. Real-device Android QA, late-game balance, deeper AI/event systems, final production art/animation and commercial Android packaging remain outstanding.

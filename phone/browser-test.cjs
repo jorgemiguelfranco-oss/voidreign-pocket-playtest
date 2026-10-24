@@ -93,7 +93,12 @@ const server = http.createServer((req, res) => {
     assert.equal(installAssets.name, "VOIDREIGN: Pocket Empire", "Install manifest should identify the game");
     assert.ok(installAssets.icons.some(icon => icon.src === "./icon-192.png" && icon.status === 200), "The 192px Android icon should be served successfully");
     assert.ok(installAssets.icons.some(icon => icon.src === "./icon-512.png" && icon.status === 200), "The 512px Android icon should be served successfully");
-    console.log("PASS browser: title, command deck, story chronicle, planet illustration, PWA manifest/icons, 200 rendered systems and 320/360/390/412px mobile layouts");
+    await page.locator('[data-tab="empire"]').click();
+    const factionCrests = await page.locator("#factions svg.faction-crest").evaluateAll(nodes => nodes.map(node => node.getAttribute("data-faction")));
+    assert.equal(factionCrests.length, 16, "Diplomacy should display an emblem for all 16 civilizations");
+    assert.equal(new Set(factionCrests).size, 16, "Every rendered faction emblem should identify a unique civilization");
+    await page.locator('[data-tab="map"]').click();
+    console.log("PASS browser: command deck, chronicle, planet art, all 16 faction crests, PWA icons, 200 systems and 320/360/390/412px layouts");
 
     await page.locator('[data-tab="fleet"]').click();
     await page.locator('#battle-panel [data-action="fight"]').click();

@@ -1,5 +1,5 @@
 "use strict";
-const CACHE_NAME = "voidreign-pocket-empire-v5";
+const CACHE_NAME = "voidreign-pocket-empire-v6";
 const APP_ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg", "./cover.svg", "./command-bridge.svg", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", event => {

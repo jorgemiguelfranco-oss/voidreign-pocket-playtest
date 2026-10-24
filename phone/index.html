@@ -25,7 +25,7 @@ button:active{transform:translateY(1px)}
 .system{background:#0b1828;border-color:#243950;border-radius:7px;min-height:76px}
 .system.selected{box-shadow:inset 3px 0 var(--gold);background:#172438}
 .pill{letter-spacing:.035em;text-transform:uppercase;font-size:9px;font-weight:800;border-radius:4px}
-.faction-sigil{border-radius:7px}
+.faction-sigil{border-radius:7px;display:grid;place-items:center;background:radial-gradient(circle,#162b3b,#071320);border:1px solid #29445a;width:43px;height:43px;flex:0 0 43px}.faction-sigil svg{display:block;width:100%;height:100%;overflow:visible}.faction-head{display:flex;align-items:center;gap:9px;min-width:0}.faction-head h3{font-size:13px;line-height:1.2;margin:0}
 .perk-card,.companion,.faction,.world-card,.technology,.ship-module{background:linear-gradient(135deg,#0e1c2d,#081321);border-color:#253b50;border-radius:8px}
 .objective{border-color:#25384d}
 .objective.done .check{color:#9ce6a0}
@@ -395,6 +395,28 @@ function updateMilestones(){
  for(const m of MILESTONES){if(!s.flags.milestones[m.id]&&milestoneReached(m.id)){s.flags.milestones[m.id]=true;s.credits+=m.credits;gainXp(m.xp,m.skill);const shardRewards={chart:10,crew:5,outpost:10,fleet:5,research:5,treaty:10,sector:20,captain5:10};const shardReward=shardRewards[m.id]||0;if(shardReward>0){s.voidShards=(s.voidShards||0)+shardReward;s.flags.shardMilestones=s.flags.shardMilestones||{};s.flags.shardMilestones[m.id]=true;say('VOID SHARD MILESTONE: +'+shardReward+' Void Shards.')}say('OBJECTIVE COMPLETE: '+m.name+'. Reward '+m.credits+' credits and '+m.xp+' XP.')}}
  renderMilestones();
 }
+function factionCrest(f){
+ const marks={
+ solari:'<circle cx="32" cy="32" r="10"/><circle cx="32" cy="32" r="17" stroke-dasharray="2 4"/><path d="M32 5v9M32 50v9M5 32h9M50 32h9M13 13l7 7M44 44l7 7M51 13l-7 7M20 44l-7 7"/>',
+ varkesh:'<path d="M32 5L51 15V30Q48 45 32 57Q16 45 13 30V15Z"/><path d="M20 25l12 9 12-9M22 41h20"/>',
+ mycel:'<path d="M32 52V31M32 38L19 25M32 34L44 20M32 46L18 39M32 42L46 35"/><circle cx="19" cy="23" r="5"/><circle cx="45" cy="18" r="5"/><circle cx="16" cy="38" r="4"/><circle cx="48" cy="34" r="4"/><circle cx="32" cy="27" r="6"/>',
+ khepri:'<path d="M32 5L54 18V44L32 57L10 44V18Z"/><path d="M18 22h28M18 30h28M22 38h20M26 46h12"/><circle cx="32" cy="18" r="3"/>',
+ nacre:'<path d="M11 22q9-13 18 0t18 0q4-4 7-3M8 31q10-13 20 0t20 0q4-4 8-2M12 40q9-12 18 0t18 0"/><circle cx="32" cy="17" r="4"/>',
+ thren:'<path d="M10 32L22 13L34 32L22 51Z"/><path d="M30 32L42 13L54 32L42 51Z"/><path d="M22 13h20M22 51h20"/>',
+ axiom:'<path d="M13 12h16v11h11v-9h11M13 12v17h12v10h18v13M13 29H7M29 23v9M41 23h10M25 39v9H13M42 49h9"/><circle cx="29" cy="12" r="3"/><circle cx="40" cy="23" r="3"/><circle cx="25" cy="39" r="3"/>',
+ drath:'<path d="M11 11L28 28L15 28L27 44L22 54L39 37L31 37L51 13L37 19L36 8L25 23Z"/><path d="M14 14l10 8M39 36l11-7"/>',
+ uln:'<path d="M8 22q8-9 16 0t16 0t16 0M8 32q8-9 16 0t16 0t16 0M8 42q8-9 16 0t16 0t16 0"/><circle cx="32" cy="14" r="4"/>',
+ seraph:'<path d="M32 5L37 22L54 15L44 31L59 38L41 40L42 58L32 44L22 58L23 40L5 38L20 31L10 15L27 22Z"/><circle cx="32" cy="32" r="7"/>',
+ goreth:'<path d="M9 18Q32 7 55 18L48 44L32 57L16 44Z"/><path d="M16 25l9 9 7-6 7 6 9-9M18 40l7 6 7-6 7 6 7-6"/><path d="M20 18l-4-8M44 18l4-8"/>',
+ vel:'<circle cx="25" cy="32" r="15"/><circle cx="39" cy="32" r="15"/><path d="M24 24h16M24 40h16M32 20v24"/><circle cx="32" cy="32" r="4"/>',
+ oruun:'<path d="M12 54V20L32 7L52 20V54Z"/><path d="M21 54V29L32 21L43 29V54M27 54V36H37V54"/><path d="M12 20h40"/>',
+ talar:'<path d="M15 13l36 36M49 10L13 46"/><circle cx="16" cy="14" r="6"/><circle cx="49" cy="49" r="6"/><path d="M24 21l7-7 7 7M25 40l-7 7 7 7"/>',
+ eshari:'<circle cx="23" cy="26" r="12"/><circle cx="41" cy="26" r="12"/><path d="M12 44q20-14 40 0M26 36l6 7 6-7"/><circle cx="32" cy="18" r="4"/>',
+ null:'<circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="13"/><path d="M8 48L48 8M16 56L56 16"/><path d="M10 32h44"/>'
+ };
+ const shape=marks[f.id]||'<circle cx="32" cy="32" r="20"/><path d="M20 32h24M32 20v24"/>';
+ return '<svg class="faction-crest" viewBox="0 0 64 64" role="img" aria-label="'+escapeHtml(f.name)+' emblem" data-faction="'+f.id+'"><circle cx="32" cy="32" r="29" fill="'+f.color+'" fill-opacity=".09" stroke="'+f.color+'" stroke-opacity=".45"/><g fill="none" stroke="'+f.color+'" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">'+shape+'</g></svg>';
+}
 function renderEmpire(){
  const controlled=s.systems.filter(x=>x.owner==="you");
  $("#empirestats").innerHTML=[["Systems",controlled.length],["Habitable",controlled.filter(x=>x.habit>=40).length],["Ships",s.ships.length],["Treaties",s.treaties.length],["Science",s.science]].map(x=>'<div class="stat"><b>'+x[1]+'</b><small>'+x[0].toUpperCase()+'</small></div>').join("");
@@ -406,7 +428,7 @@ function renderEmpire(){
  $("#policy-description").textContent=p==="industrial"?"Industrial: +25% mineral production.":p==="trade"?"Commercial: +25% credit income.":p==="research"?"Research: +30% science output.":"Balanced: no production bonuses or penalties.";
  all("[data-policy]").forEach(b=>{b.classList.toggle("active",b.dataset.policy===p);b.classList.toggle("primary",b.dataset.policy===p)});
  $("#technologies").innerHTML=TECHNOLOGIES.map(t=>'<div class="technology"><div class="row"><h3>'+t.name+'</h3><span class="pill">'+(s.techs[t.id]?"Researched":t.cost+" Science")+'</span></div><p>'+t.desc+'</p><button data-research="'+t.id+'" '+(s.techs[t.id]||s.science<t.cost?'disabled':'')+'>'+(s.techs[t.id]?"Technology acquired":"Research · "+t.cost+" science")+'</button></div>').join("");
- $("#factions").innerHTML=speciesRoster.map(f=>{const rel=s.relations[f.id]||0,owned=s.systems.filter(x=>x.owner===f.id).length,cost=Math.max(5,15-perkRank("diplomat")*3-(s.techs.diplomatic_corps?5:0));return '<div class="faction" style="--faction-color:'+f.color+'"><div class="row"><div class="faction-head"><span class="faction-sigil">'+f.sigil+'</span><h3>'+f.name+'</h3></div><span class="pill">'+rel+' standing</span></div><p>'+f.style+' civilization · '+f.bonus+'. Systems: '+owned+(s.treaties.includes(f.id)?' · Treaty active':'')+'</p><div class="meter"><i style="width:'+rel+'%"></i></div><button data-diplomacy="'+f.id+'" '+(s.credits<cost||s.treaties.includes(f.id)?'disabled':'')+'>'+(s.treaties.includes(f.id)?'Treaty active':'Send envoy · '+cost+' credits')+'</button></div>'}).join("");
+ $("#factions").innerHTML=speciesRoster.map(f=>{const rel=s.relations[f.id]||0,owned=s.systems.filter(x=>x.owner===f.id).length,cost=Math.max(5,15-perkRank("diplomat")*3-(s.techs.diplomatic_corps?5:0));return '<div class="faction" style="--faction-color:'+f.color+'"><div class="row"><div class="faction-head"><span class="faction-sigil">'+factionCrest(f)+'</span><h3>'+f.name+'</h3></div><span class="pill">'+rel+' standing</span></div><p>'+f.style+' civilization · '+f.bonus+'. Systems: '+owned+(s.treaties.includes(f.id)?' · Treaty active':'')+'</p><div class="meter"><i style="width:'+rel+'%"></i></div><button data-diplomacy="'+f.id+'" '+(s.credits<cost||s.treaties.includes(f.id)?'disabled':'')+'>'+(s.treaties.includes(f.id)?'Treaty active':'Send envoy · '+cost+' credits')+'</button></div>'}).join("");
 }
 function buildBuilding(systemId,kind){
  const x=s.systems.find(y=>y.id===systemId),b=BUILDINGS.find(y=>y.id===kind);if(!x||!b||x.owner!=="you")return;

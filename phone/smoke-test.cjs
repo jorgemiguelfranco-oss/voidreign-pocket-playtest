@@ -48,7 +48,7 @@ const sandbox = {
 const hook = "\nload();\n})();";
 assert.ok(source.includes(hook), "Game startup hook should be discoverable for isolated testing");
 source = source.replace(hook,
-  "\nglobalThis.__voidreignTest={state:()=>s,makeGalaxy,speciesRoster,gainXp,choosePerk,recruitCompanion,dismissCompanion,travel,act,endTurn,renderGalaxyMap,buildBuilding,researchTechnology,setPolicy,refitShip,resolveAIEmpires,addCompanionXp,resolveColonyGrowth,startBattle,resolveBattleMove,purchaseCosmetic,renderShop,COSMETIC_ITEMS,validateImportSave,updateStoryArc,renderStoryArc};\nload();\n})();");
+  "\nglobalThis.__voidreignTest={state:()=>s,makeGalaxy,speciesRoster,gainXp,choosePerk,recruitCompanion,dismissCompanion,travel,act,endTurn,renderGalaxyMap,buildBuilding,researchTechnology,setPolicy,refitShip,resolveAIEmpires,addCompanionXp,resolveColonyGrowth,startBattle,resolveBattleMove,purchaseCosmetic,renderShop,COSMETIC_ITEMS,validateImportSave,updateStoryArc,renderStoryArc,factionCrest};\nload();\n})();");
 vm.runInNewContext(source, sandbox, { timeout: 10000 });
 
 const game = sandbox.__voidreignTest;
@@ -60,6 +60,9 @@ assert.equal(state.systems.length, 200, "Campaign must have exactly 200 systems"
 assert.equal(new Set(state.systems.map(x => x.id)).size, 200, "System IDs must be unique");
 assert.equal(new Set(galaxy.map(x => x.name)).size, 200, "System names must be unique");
 assert.equal(species.length, 16, "Roster must include 16 species");
+assert.equal(new Set(species.map(f => game.factionCrest(f))).size, 16, "Each civilization should have a distinct original SVG crest");
+assert.equal((element("#factions").innerHTML.match(/class="faction-crest"/g) || []).length, 16, "Diplomacy should render a crest for every civilization");
+assert.equal(new Set([...element("#factions").innerHTML.matchAll(/data-faction="([^"]+)"/g)].map(match => match[1])).size, 16, "Every crest should identify a unique civilization");
 assert.equal(game.validateImportSave(state), true, "The current campaign should be safe to export and re-import");
 const hostileImport = JSON.parse(JSON.stringify(state));
 hostileImport.systems[0].name = '<img src=x onerror="alert(1)">';
@@ -295,6 +298,7 @@ assert.ok(source.includes("function validateImportSave(v)"), "Import must valida
 assert.ok(source.includes("5 MB safety limit"), "Import must cap backup size");
 assert.ok(source.includes("Your current campaign was kept."), "A failed import must preserve the existing campaign");
 assert.ok(source.includes("function renderPlanetArt(system)"), "Systems should use an original vector planet illustration");
+assert.ok(source.includes("function factionCrest(f)"), "Every civilization should have a hand-authored emblem");
 assert.ok(source.includes("Creditor interest"), "Debt should charge interest rather than forgiving principal automatically");
 assert.ok(source.includes("case'repay-debt':"), "The player should be able to repay principal manually");
 assert.ok(source.includes("Environmental stress"), "Colony habitability and industrial strain should affect stability");
@@ -328,7 +332,7 @@ for (const [name, size] of [["icon-192.png", 192], ["icon-512.png", 512]]) {
 }
 const deployWorkflow = fs.readFileSync(path.join(__dirname, "..", ".github", "workflows", "deploy-pocket-empire.yml"), "utf8");
 assert.ok(deployWorkflow.includes("actions/upload-pages-artifact") && deployWorkflow.includes("actions/deploy-pages"), "Static PWA Pages deployment workflow should package and publish the phone directory");
-assert.ok(sw.includes("voidreign-pocket-empire-v5"), "Offline cache version should be bumped for Android install icon assets");
+assert.ok(sw.includes("voidreign-pocket-empire-v6"), "Offline cache version should be bumped for Android install icon assets");
 assert.ok(sw.includes("./command-bridge.svg"), "Offline cache should include the bespoke command-deck artwork");
 const bridgeSvg = fs.readFileSync(path.join(__dirname, "command-bridge.svg"), "utf8");
 assert.ok(bridgeSvg.trim().startsWith("<svg") && bridgeSvg.trim().endsWith("</svg>"), "Command-deck artwork must be a complete SVG document");
