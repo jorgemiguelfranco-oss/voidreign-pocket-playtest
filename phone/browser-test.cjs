@@ -6,6 +6,7 @@ const path = require("node:path");
 const { chromium } = require("playwright");
 
 const root = __dirname;
+const hostedUrl = process.env.VOIDREIGN_BASE_URL;
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -40,7 +41,7 @@ const server = http.createServer((req, res) => {
   let context;
   const failures = [];
   try {
-    await new Promise(resolve => server.listen(4173, "0.0.0.0", resolve));
+    if (!hostedUrl) await new Promise(resolve => server.listen(4173, "0.0.0.0", resolve));
     browser = await chromium.launch({ headless: true, args: ["--no-sandbox"] });
     context = await browser.newContext({
       viewport: { width: 390, height: 844 },
@@ -53,7 +54,7 @@ const server = http.createServer((req, res) => {
     page.on("console", message => {
       if (message.type() === "error") failures.push("console: " + message.text());
     });
-    await page.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+    await page.goto(hostedUrl || "http://127.0.0.1:4173/", { waitUntil: "networkidle" });
     assert.equal(await page.title(), "VOIDREIGN: Pocket Empire", "Game title should load");
     assert.equal(
       await page.locator("#galaxy-svg [data-map-system]").count(),
@@ -79,7 +80,20 @@ const server = http.createServer((req, res) => {
     assert.ok((await page.locator(".command-deck").innerText()).toUpperCase().includes("THE SILENT CROWN"), "The original command deck should render");
     assert.ok((await page.locator("#story-chapters").innerText()).includes("Ghosts on the Chart"), "The campaign chronicle should render its opening objective");
     assert.ok(await page.locator("#systemdetail .planet-panel svg").count() === 1, "Selected system should have an original vector illustration");
-    console.log("PASS browser: title, command deck, story chronicle, planet illustration, 200 rendered systems and 320/360/390/412px mobile layouts");
+    const installAssets = await page.evaluate(async () => {
+      const response = await fetch(new URL("manifest.webmanifest", location.href));
+      if (!response.ok) throw new Error("Manifest request failed: " + response.status);
+      const manifest = await response.json();
+      const icons = await Promise.all((manifest.icons || []).filter(icon => icon.type === "image/png").map(async icon => {
+        const iconResponse = await fetch(new URL(icon.src, location.href));
+        return { src: icon.src, status: iconResponse.status, type: iconResponse.headers.get("content-type") };
+      }));
+      return { manifestStatus: response.status, name: manifest.name, icons };
+    });
+    assert.equal(installAssets.name, "VOIDREIGN: Pocket Empire", "Install manifest should identify the game");
+    assert.ok(installAssets.icons.some(icon => icon.src === "./icon-192.png" && icon.status === 200), "The 192px Android icon should be served successfully");
+    assert.ok(installAssets.icons.some(icon => icon.src === "./icon-512.png" && icon.status === 200), "The 512px Android icon should be served successfully");
+    console.log("PASS browser: title, command deck, story chronicle, planet illustration, PWA manifest/icons, 200 rendered systems and 320/360/390/412px mobile layouts");
 
     await page.locator('[data-tab="fleet"]').click();
     await page.locator('#battle-panel [data-action="fight"]').click();
@@ -155,7 +169,7 @@ const server = http.createServer((req, res) => {
       controller: !!navigator.serviceWorker?.controller,
       registration: !!(await navigator.serviceWorker?.getRegistration())
     }));
-    assert.ok(serviceWorker.supported && serviceWorker.registration, "PWA should register service worker on localhost");
+    assert.ok(serviceWorker.supported && serviceWorker.registration, "PWA should register a service worker on localhost or HTTPS");
     await context.setOffline(true);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 10000 });
     assert.equal(await page.title(), "VOIDREIGN: Pocket Empire", "Offline reload should show cached game shell");
@@ -182,6 +196,6 @@ const server = http.createServer((req, res) => {
     process.exitCode = 1;
   } finally {
     if (browser) await browser.close().catch(() => {});
-    await new Promise(resolve => server.close(resolve));
+    if (server.listening) await new Promise(resolve => server.close(resolve));
   }
 })();
